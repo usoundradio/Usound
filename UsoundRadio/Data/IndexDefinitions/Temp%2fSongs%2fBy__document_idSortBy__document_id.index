@@ -1,0 +1,20 @@
+{
+  "Name": "Temp/Songs/By__document_idSortBy__document_id",
+  "Map": "from doc in docs.Songs\r\nselect new { __document_id = doc.__document_id }",
+  "Maps": [
+    "from doc in docs.Songs\r\nselect new { __document_id = doc.__document_id }"
+  ],
+  "Reduce": null,
+  "TransformResults": null,
+  "IsMapReduce": false,
+  "IsCompiled": false,
+  "IsTemp": true,
+  "Stores": {},
+  "Indexes": {},
+  "SortOptions": {
+    "__document_id": "Int"
+  },
+  "Analyzers": {},
+  "Fields": [],
+  "Type": "Temp"
+}

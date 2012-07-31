@@ -1,0 +1,305 @@
+﻿.song-control:hover
+{
+    background-color: rgba(194, 46, 0, .6);
+    box-shadow: 2px 2px 2px silver;
+}
+
+.song-control:active
+{
+    background-color:rgba(194, 46, 0, .7);
+}
+
+#songs-table
+{
+    margin-top: 20px;
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#songs-table .column
+{
+    padding: 0 15px 0 15px;
+}
+
+#songs-table .current-song-column
+{
+    width: 300px;
+    padding: 10px 30px 0 30px;
+}
+
+#songs-table thead th
+{
+    /*color: rgb(160, 168, 180);*/
+    color: rgba(0, 0, 0, .7);
+    font-size: 16px;
+    padding-left: 15px;
+    font-family: Lucida Sans, Lucida Sans Regular, Lucida Grande, Lucida Sans Unicode, Geneva, Verdana, sans-serif;
+    text-shadow: 1px 1px 4px silver;
+    text-align: start;
+}
+
+.current-song
+{
+    width: 300px;
+    height: 300px;
+    box-shadow: 0 0 4px 4px #808080;
+}
+
+.current-song .album-art:hover
+{
+    box-shadow: 0 0 4px 4px rgb(219, 139, 77);   
+}
+
+.current-song .album-art
+{
+    width: 300px;
+    height: 300px;
+    cursor: pointer;
+}
+
+.current-song .info
+{
+    background-color: rgb(194, 46, 0);
+    background-color: rgba(194, 46, 0, .9);
+    height: 75px;
+    position: relative;
+    top: 10px;
+    left: 5px;
+    width: 270px;
+    text-align: left;
+    padding: 10px;
+}
+
+.current-song .info .rating
+{
+    float: right;
+    width: 60px; 
+    height: 75px; 
+    margin-left: 2px;
+    background-color: white;
+    font-size: 32px;
+    text-align: center;
+}
+
+.current-song .info .rating img
+{
+    cursor: pointer;
+}
+
+.current-song .info .rating span
+{
+    display: block;
+    margin-top: -5px;
+    text-shadow: 0 0 5px silver;
+}
+
+.current-song .info .name
+{
+    color: white;
+    font-size: 22px;
+    font-family: 'Lucida Sans';
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    display: block;
+    cursor: default;
+}
+
+.current-song .info .artist, .current-song .info .album
+{
+    font-size: 16px;
+    font-family: Franklin Gothic Medium,  Arial Narrow, Arial, sans-serif;
+    color: rgb(219, 139, 77);
+    margin-top: 5px;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    text-decoration: none;
+}
+
+.current-song .info a:hover, .current-song .info a:hover
+{
+    text-decoration: underline;        
+}
+
+.song
+{
+    width: 100px;
+    height: 100px;
+    margin-top: 25px;
+    box-shadow: 0 0 4px 4px silver;
+    cursor: pointer;
+}
+
+.song:hover
+{
+    box-shadow: 0 0 4px 4px rgb(219, 139, 77);        
+}
+
+.song img
+{
+    width: 100px;
+    height: 100px;
+}
+
+.song .info
+{
+    background-color: rgb(194, 46, 0);
+    background-color: rgba(194, 46, 0, .8);
+    position: relative;
+    left: -8px;
+    top: -30px;
+    width: 116px;
+    color: white; 
+    font-size: 12px;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    font-family: 'Lucida Sans';
+}
+
+.title {
+    color: black;
+    font-size: 64px;
+    margin-left: 5px;
+    font-family: 'Love Ya Like A Sister', cursive;
+    text-shadow: 1px 1px 2px #808080;
+}
+
+.subtitle
+{
+    color: silver;
+    font-size: 20px;
+    margin-left: 75px;
+    font-family: 'Love Ya Like A Sister', cursive;
+    letter-spacing: -1px;
+}
+
+.grayed-out
+{
+    background-color: rgba(0, 0, 0, .7); 
+    position: fixed; 
+    z-index: 2; 
+    left: 0; 
+    right: 0; 
+    top: 0; 
+    bottom: 0;
+}
+
+.song-request-dialog
+{
+    position: fixed; 
+    left: 30%; 
+    right: 30%; 
+    bottom: 30%; 
+    top: 30%; 
+    background-color: rgba(255, 255, 255, .9);
+    border-width: 2px;
+    border-radius: 5px;
+    padding: 5px;
+    min-height:300px;
+}
+
+.song-request-dialog .title
+{      
+    font-size: 24px;
+}
+
+.song-request-dialog #song-request-textbox
+{
+    height: 28px;
+    margin-left: 20px;
+    margin-top: 10px;
+    width: 90%;
+    font-family: 'Lucida Sans';
+    font-size: 22px;
+}
+
+#song-request-drop-down
+{
+    background-color: white;
+    max-height: 250px;
+    overflow: auto;
+    width: 90%;
+    margin-left: 20px;
+    box-shadow: 2px 2px 3px #808080;
+}
+
+.song-request-match
+{
+    cursor: default;
+    font-family: 'Lucida Sans';
+    height: 64px;
+    margin: 5px;
+}
+
+.song-request-match:hover
+{
+    background-color: rgba(194, 46, 0, .9);
+    color: white;
+}
+
+.song-request-match img
+{
+    height: 48px;
+    width: 48px;
+    margin-top: 8px;
+    margin-left: 8px;
+    margin-right: 5px;
+    box-shadow: 2px 2px 2px #808080;
+}
+
+#request-current-song-button
+{
+    text-decoration: none;
+    font-size: 18px;
+    height: 64px;
+    width: 256px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 4%;
+    position: relative;
+    text-align:center;
+    vertical-align:middle;
+    background-color:rgba(194, 46, 0, .9);
+    box-shadow: 2px 2px 3px silver;
+    cursor: pointer;
+}
+
+#request-current-song-button:hover
+{
+    background-color:rgb(194, 46, 0);
+}
+
+#request-current-song-button a
+{
+    color: white;
+    line-height: 64px;
+    text-decoration: none;
+    font-family: 'Lucida Sans';
+}
+
+#request-current-song-button:hover a
+{
+    color: white;
+}
+
+.ellipsis-overflow
+{
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden; 
+}
+
+.page {
+    width: 95%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+body 
+{
+    /*background-color: rgb(245,243,234);*/
+    background-color: white;
+}

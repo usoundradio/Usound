@@ -1,0 +1,20 @@
+{
+  "Name": "Auto/Likes/ByDateAndLikeStatusSortByDate",
+  "Map": "from doc in docs.Likes\r\nselect new { LikeStatus = doc.LikeStatus, Date = doc.Date }",
+  "Maps": [
+    "from doc in docs.Likes\r\nselect new { LikeStatus = doc.LikeStatus, Date = doc.Date }"
+  ],
+  "Reduce": null,
+  "TransformResults": null,
+  "IsMapReduce": false,
+  "IsCompiled": false,
+  "IsTemp": false,
+  "Stores": {},
+  "Indexes": {},
+  "SortOptions": {
+    "Date": "String"
+  },
+  "Analyzers": {},
+  "Fields": [],
+  "Type": "Auto"
+}

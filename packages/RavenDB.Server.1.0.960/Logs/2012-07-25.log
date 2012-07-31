@@ -1,0 +1,174 @@
+time,logger,level,message,exception
+2012-07-25 10:24:03.9179,Raven.Database.Impl.DocumentCacher,Info,"MemoryCache Settings:
+  PhysicalMemoryLimit = 99
+  CacheMemoryLimit    = 4171235328
+  PollingInterval     = 00:02:00",
+2012-07-25 10:24:03.9539,Raven.Storage.Esent.TransactionalStorage,Info,"Esent Settings:
+  MaxVerPages      = 32768
+  CacheSizeMax     = 262144
+  DatabasePageSize = 4096",
+2012-07-25 10:24:07.0971,Raven.Storage.Esent.StorageActions.DocumentStorageActions,Debug,Document with key 'Raven/Backup/Status' was not found,
+2012-07-25 10:24:07.1861,Raven.Database.Indexing.WorkContext,Debug,"No work was found, workerWorkCounter: 0, for: IndexingExecuter, will wait for additional work",
+2012-07-25 10:24:07.1861,Raven.Database.Indexing.WorkContext,Debug,"No work was found, workerWorkCounter: 0, for: ReducingExecuter, will wait for additional work",
+2012-07-25 10:24:07.5901,Raven.Database.Server.HttpServer,Debug,Request #   1: GET     -    59 ms - <default>  - 200 - /docs/?start=0&pageSize=15&noCache=-734362737,
+2012-07-25 10:24:10.7993,Raven.Database.Server.HttpServer,Debug,Request #   2: GET     -   240 ms - <default>  - 200 - /stats?noCache=-1789364361,
+2012-07-25 10:24:16.9456,Raven.Database.Storage.IndexDefinitionStorage,Info,"New index Raven%2fDocumentsByEntityName:
+using Raven.Abstractions;
+using Raven.Database.Linq;
+using System.Linq;
+using System.Collections.Generic;
+using System.Collections;
+using System;
+using Raven.Database.Linq.PrivateExtensions;
+using Lucene.Net.Documents;
+using System.Globalization;
+using Raven.Database.Indexing;
+public class Index_Raven_2fDocumentsByEntityName : AbstractViewGenerator
+{
+	public Index_Raven_2fDocumentsByEntityName()
+	{
+		this.ViewText = @""from doc in docs 
+let Tag = doc[""""@metadata""""][""""Raven-Entity-Name""""]
+select new { Tag, LastModified = (DateTime)doc[""""@metadata""""][""""Last-Modified""""] };
+"";
+		this.AddMapDefinition(docs => from doc in docs
+			let Tag = doc[""@metadata""][""Raven-Entity-Name""]
+			select new { Tag, LastModified = (DateTime)doc[""@metadata""][""Last-Modified""], __document_id = doc.__document_id });
+		this.AddField(""LastModified"");
+		this.AddField(""__document_id"");
+		this.AddField(""Tag"");
+		this.AddQueryParameterForMap(""__document_id"");
+		this.AddQueryParameterForReduce(""__document_id"");
+	}
+}
+
+Compiled to:
+using Raven.Abstractions;
+using Raven.Database.Linq;
+using System.Linq;
+using System.Collections.Generic;
+using System.Collections;
+using System;
+using Raven.Database.Linq.PrivateExtensions;
+using Lucene.Net.Documents;
+using System.Globalization;
+using Raven.Database.Indexing;
+public class Index_Raven_2fDocumentsByEntityName : AbstractViewGenerator
+{
+	public Index_Raven_2fDocumentsByEntityName()
+	{
+		this.ViewText = @""from doc in docs 
+let Tag = doc[""""@metadata""""][""""Raven-Entity-Name""""]
+select new { Tag, LastModified = (DateTime)doc[""""@metadata""""][""""Last-Modified""""] };
+"";
+		this.AddMapDefinition(docs => from doc in docs
+			let Tag = doc[""@metadata""][""Raven-Entity-Name""]
+			select new { Tag, LastModified = (DateTime)doc[""@metadata""][""Last-Modified""], __document_id = doc.__document_id });
+		this.AddField(""LastModified"");
+		this.AddField(""__document_id"");
+		this.AddField(""Tag"");
+		this.AddQueryParameterForMap(""__document_id"");
+		this.AddQueryParameterForReduce(""__document_id"");
+	}
+}
+",
+2012-07-25 10:24:17.0377,Raven.Database.Indexing.IndexStorage,Info,Creating index Raven/DocumentsByEntityName with encoded name Raven/DocumentsByEntityName,
+2012-07-25 10:24:17.2757,Raven.Database.Indexing.Index.Indexing,Debug,Creating index for Raven/DocumentsByEntityName,
+2012-07-25 10:24:17.2967,Raven.Database.Indexing.WorkContext,Debug,Incremented work counter to 1 because: PUT INDEX Raven/DocumentsByEntityName,
+2012-07-25 10:24:17.3337,Raven.Database.Indexing.WorkContext,Debug,"No work was found, workerWorkCounter: 1, for: ReducingExecuter, will wait for additional work",
+2012-07-25 10:24:17.3337,Raven.Database.Indexing.WorkContext,Debug,"No work was found, workerWorkCounter: 1, for: IndexingExecuter, will wait for additional work",
+2012-07-25 10:24:20.2028,Raven.Database.Server.HttpServer,Debug,Request #   3: GET     -     0 ms - <default>  - 200 - /docs?pageSize=0&noCache=-1795372202,
+2012-07-25 10:24:20.2468,Raven.Database.Server.HttpServer,Debug,Request #   4: GET     -     3 ms - <default>  - 200 - /license/status?noCache=-157152080,
+2012-07-25 10:24:20.2588,Raven.Database.Server.HttpServer,Debug,Request #   5: GET     -    11 ms - <default>  - 200 - /build/version?noCache=-14746463,
+2012-07-25 10:24:20.2718,Raven.Database.Server.HttpServer,Debug,Request #   6: GET     -    32 ms - <default>  - 200 - /stats?noCache=-2007738984,
+2012-07-25 10:24:26.1962,Raven.Database.Server.HttpServer,Debug,Request #   7: GET     -    28 ms - <default>  - 200 - /stats?noCache=-808842846,
+2012-07-25 10:24:28.0133,Raven.Database.Server.HttpServer,Debug,Request #   8: GET     -    40 ms - <default>  - 200 - /stats?noCache=-432815609,
+2012-07-25 10:24:31.2605,Raven.Database.Server.HttpServer,Debug,Request #   9: GET     -    38 ms - <default>  - 200 - /stats?noCache=-1245422807,
+2012-07-25 10:25:50.9070,Raven.Database.Server.HttpServer,Debug,Request #  10: GET     -     0 ms - <default>  - 200 - /docs?pageSize=0&noCache=70432941,
+2012-07-25 10:25:50.9270,Raven.Database.Server.HttpServer,Debug,Request #  11: GET     -     0 ms - <default>  - 200 - /license/status?noCache=1013985551,
+2012-07-25 10:25:50.9270,Raven.Database.Server.HttpServer,Debug,Request #  12: GET     -     0 ms - <default>  - 200 - /build/version?noCache=464936347,
+2012-07-25 10:36:36.0889,Raven.Database.Server.HttpServer,Debug,Request #  13: GET     -     0 ms - <default>  - 200 - /docs?pageSize=0&noCache=1924077391,
+2012-07-25 10:36:36.1159,Raven.Database.Server.HttpServer,Debug,Request #  14: GET     -     0 ms - <default>  - 200 - /license/status?noCache=1711097135,
+2012-07-25 10:36:36.1159,Raven.Database.Server.HttpServer,Debug,Request #  15: GET     -     0 ms - <default>  - 200 - /build/version?noCache=-1113664607,
+2012-07-25 10:38:51.4307,Raven.Database.Server.HttpServer,Debug,Request #  16: GET     -    39 ms - <default>  - 200 - /stats?noCache=-481882146,
+time,logger,level,message,exception
+2012-07-25 10:44:05.0456,Raven.Database.Impl.DocumentCacher,Info,"MemoryCache Settings:
+  PhysicalMemoryLimit = 99
+  CacheMemoryLimit    = 4171235328
+  PollingInterval     = 00:02:00",
+2012-07-25 10:44:05.0886,Raven.Storage.Esent.TransactionalStorage,Info,"Esent Settings:
+  MaxVerPages      = 32768
+  CacheSizeMax     = 262144
+  DatabasePageSize = 4096",
+2012-07-25 10:44:08.8378,Raven.Database.Storage.IndexDefinitionStorage,Info,"New index Raven%2fDocumentsByEntityName:
+using Raven.Abstractions;
+using Raven.Database.Linq;
+using System.Linq;
+using System.Collections.Generic;
+using System.Collections;
+using System;
+using Raven.Database.Linq.PrivateExtensions;
+using Lucene.Net.Documents;
+using System.Globalization;
+using Raven.Database.Indexing;
+public class Index_Raven_2fDocumentsByEntityName : AbstractViewGenerator
+{
+	public Index_Raven_2fDocumentsByEntityName()
+	{
+		this.ViewText = @""from doc in docs 
+let Tag = doc[""""@metadata""""][""""Raven-Entity-Name""""]
+select new { Tag, LastModified = (DateTime)doc[""""@metadata""""][""""Last-Modified""""] };
+"";
+		this.AddMapDefinition(docs => from doc in docs
+			let Tag = doc[""@metadata""][""Raven-Entity-Name""]
+			select new { Tag, LastModified = (DateTime)doc[""@metadata""][""Last-Modified""], __document_id = doc.__document_id });
+		this.AddField(""LastModified"");
+		this.AddField(""__document_id"");
+		this.AddField(""Tag"");
+		this.AddQueryParameterForMap(""__document_id"");
+		this.AddQueryParameterForReduce(""__document_id"");
+	}
+}
+
+Compiled to:
+using Raven.Abstractions;
+using Raven.Database.Linq;
+using System.Linq;
+using System.Collections.Generic;
+using System.Collections;
+using System;
+using Raven.Database.Linq.PrivateExtensions;
+using Lucene.Net.Documents;
+using System.Globalization;
+using Raven.Database.Indexing;
+public class Index_Raven_2fDocumentsByEntityName : AbstractViewGenerator
+{
+	public Index_Raven_2fDocumentsByEntityName()
+	{
+		this.ViewText = @""from doc in docs 
+let Tag = doc[""""@metadata""""][""""Raven-Entity-Name""""]
+select new { Tag, LastModified = (DateTime)doc[""""@metadata""""][""""Last-Modified""""] };
+"";
+		this.AddMapDefinition(docs => from doc in docs
+			let Tag = doc[""@metadata""][""Raven-Entity-Name""]
+			select new { Tag, LastModified = (DateTime)doc[""@metadata""][""Last-Modified""], __document_id = doc.__document_id });
+		this.AddField(""LastModified"");
+		this.AddField(""__document_id"");
+		this.AddField(""Tag"");
+		this.AddQueryParameterForMap(""__document_id"");
+		this.AddQueryParameterForReduce(""__document_id"");
+	}
+}
+",
+2012-07-25 10:44:08.8588,Raven.Database.Indexing.IndexStorage.Startup,Debug,Loading saved index Raven/DocumentsByEntityName,
+2012-07-25 10:44:08.8918,Raven.Database.Indexing.Index.Indexing,Debug,Creating index for Raven/DocumentsByEntityName,
+2012-07-25 10:44:08.9938,Raven.Storage.Esent.StorageActions.DocumentStorageActions,Debug,Document with key 'Raven/Backup/Status' was not found,
+2012-07-25 10:44:09.1188,Raven.Database.Indexing.WorkContext,Debug,"No work was found, workerWorkCounter: 0, for: ReducingExecuter, will wait for additional work",
+2012-07-25 10:44:09.1188,Raven.Database.Indexing.WorkContext,Debug,"No work was found, workerWorkCounter: 0, for: IndexingExecuter, will wait for additional work",
+2012-07-25 10:44:09.6069,Raven.Database.Server.HttpServer,Debug,Request #   1: GET     -    56 ms - <default>  - 200 - /docs/?start=0&pageSize=42&noCache=-1199074862,
+2012-07-25 10:44:09.6859,Raven.Database.Server.HttpServer,Debug,Request #   2: GET     -   110 ms - <default>  - 200 - /stats?noCache=-338795404,
+2012-07-25 10:44:16.2322,Raven.Database.Server.HttpServer,Debug,Request #   3: GET     -     0 ms - <default>  - 200 - /docs?pageSize=0&noCache=2063187158,
+2012-07-25 10:44:16.2612,Raven.Database.Server.HttpServer,Debug,Request #   4: GET     -     5 ms - <default>  - 200 - /license/status?noCache=-1679936181,
+2012-07-25 10:44:16.2612,Raven.Database.Server.HttpServer,Debug,Request #   5: GET     -    10 ms - <default>  - 200 - /build/version?noCache=-17487490,
+2012-07-25 10:51:38.9336,Raven.Database.Server.HttpServer,Debug,Request #   6: GET     -    49 ms - <default>  - 200 - /stats?noCache=-616306130,
+2012-07-25 10:51:38.9336,Raven.Database.Server.HttpServer,Debug,Request #   7: GET     -    31 ms - <default>  - 200 - /stats?noCache=1393057087,

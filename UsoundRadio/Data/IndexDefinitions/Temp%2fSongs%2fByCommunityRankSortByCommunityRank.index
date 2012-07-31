@@ -1,0 +1,20 @@
+{
+  "Name": "Temp/Songs/ByCommunityRankSortByCommunityRank",
+  "Map": "from doc in docs.Songs\r\nselect new { CommunityRank = doc.CommunityRank }",
+  "Maps": [
+    "from doc in docs.Songs\r\nselect new { CommunityRank = doc.CommunityRank }"
+  ],
+  "Reduce": null,
+  "TransformResults": null,
+  "IsMapReduce": false,
+  "IsCompiled": false,
+  "IsTemp": true,
+  "Stores": {},
+  "Indexes": {},
+  "SortOptions": {
+    "CommunityRank": "Int"
+  },
+  "Analyzers": {},
+  "Fields": [],
+  "Type": "Temp"
+}

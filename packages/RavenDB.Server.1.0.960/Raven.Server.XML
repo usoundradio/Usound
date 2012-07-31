@@ -1,0 +1,47 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Raven.Server</name>
+    </assembly>
+    <members>
+        <member name="T:Raven.Client.Extensions.MultiDatabase">
+            <summary>
+             Methods to create mutli tenants databases
+            </summary>
+        </member>
+        <member name="F:Raven.Server.ProjectInstaller.components">
+            <summary>
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:Raven.Server.ProjectInstaller.Dispose(System.Boolean)">
+            <summary> 
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:Raven.Server.ProjectInstaller.InitializeComponent">
+            <summary>
+            Required method for Designer support - do not modify
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="F:Raven.Server.RavenService.components">
+            <summary> 
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:Raven.Server.RavenService.Dispose(System.Boolean)">
+            <summary>
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:Raven.Server.RavenService.InitializeComponent">
+            <summary> 
+            Required method for Designer support - do not modify 
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+    </members>
+</doc>

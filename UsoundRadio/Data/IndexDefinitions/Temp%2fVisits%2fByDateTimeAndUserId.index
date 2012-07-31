@@ -1,0 +1,18 @@
+{
+  "Name": "Temp/Visits/ByDateTimeAndUserId",
+  "Map": "from doc in docs.Visits\r\nselect new { DateTime = doc.DateTime, UserId = doc.UserId }",
+  "Maps": [
+    "from doc in docs.Visits\r\nselect new { DateTime = doc.DateTime, UserId = doc.UserId }"
+  ],
+  "Reduce": null,
+  "TransformResults": null,
+  "IsMapReduce": false,
+  "IsCompiled": false,
+  "IsTemp": true,
+  "Stores": {},
+  "Indexes": {},
+  "SortOptions": {},
+  "Analyzers": {},
+  "Fields": [],
+  "Type": "Temp"
+}

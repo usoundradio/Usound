@@ -1,0 +1,18 @@
+{
+  "Name": "Temp/Songs/ByFileName",
+  "Map": "from doc in docs.Songs\r\nselect new { FileName = doc.FileName }",
+  "Maps": [
+    "from doc in docs.Songs\r\nselect new { FileName = doc.FileName }"
+  ],
+  "Reduce": null,
+  "TransformResults": null,
+  "IsMapReduce": false,
+  "IsCompiled": false,
+  "IsTemp": true,
+  "Stores": {},
+  "Indexes": {},
+  "SortOptions": {},
+  "Analyzers": {},
+  "Fields": [],
+  "Type": "Temp"
+}

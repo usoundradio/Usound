@@ -1,0 +1,123 @@
+﻿<table id="songs-table">
+    <thead>
+        <tr>
+     
+        
+             
+  
+        </tr>
+    </thead>
+
+    <tbody>
+        
+            <td class="current-song-column">
+
+                @*The big current song tile*@
+                <div class="current-song" data-bind="with: currentSong">
+                   
+                 
+                       <span class="name" data-bind="text: name, attr: { title: name }"></span>
+                    <img class="album-art" data-bind="attr: { src: albumArtUri, title: artist + ' - ' + album + ' - ' + name}, click: playSongFromAlbum" />
+                    <div class="info">
+                        <div class="rating">
+              
+                           
+                            <img style="display: block; margin-left: 8px;" data-bind="attr: { src: thumbUpImage, title: likeHoverText }, click: like, touchstart: like" />
+                            <span data-bind="text: communityRank, style: { color: chavah.converters.rankToColor($data.communityRank()) }"></span>
+                            <img style="display: block; margin-left: 8px; margin-top: -7px;" data-bind="attr: { src: thumbDownImage, title: dislikeHoverText }, click: dislike, touchstart: dislike" />
+                        </div>
+                       
+                        <div class="artist">
+                            <span>By</span>
+                            <a class="artist" href="#" data-bind="text: artist, click: playSongFromArtist, attr: { title: artist + ' - click to play another song from this artist' }"></a>
+                        </div>
+                        <div class="artist">
+                            <span class="artist">On</span>
+                            <a class="album" href="#" data-bind="text: album, click: playSongFromAlbum, attr: { title: album + ' - click to play another song from this album' }"></a>
+                        </div>
+                              <div style="display:none" > <div data-bind="text: genre"></div>   <div data-bind="text: country"></div>  <div data-bind="text: description"></div></div> 
+                    </div>
+  
+                </div>
+                      
+            </td>
+           
+ 
+    </tbody>
+</table>
+
+
+
+<div id="player-container"></div>
+<div id="player"></div>
+<audio id="audioElement"></audio>
+
+<script id="song-tile-template" type="text/html">
+    <div class="song" data-bind="
+            visible: hasSong, 
+            event: { click: play, mouseenter: mouseEnter, mouseout: mouseLeave }, 
+            fadeInOnSongChange: true,
+            attr: { title: artist() + ' - ' + album() + ' - ' + name() + '\r\nCommunity rank: ' + ko.utils.unwrapObservable(communityRank()) }">
+        <img data-bind="attr: { src: albumArtUri }" />
+        <div class="info">
+            <span data-bind="text: name"></span>
+
+        </div>
+    </div>
+</script>
+
+<script type="text/javascript">
+
+    $(function () {
+
+        // Required for IE if we're making cross-site calls.
+        jQuery.support.cors = true;
+
+        chavah.constants.contentDirectory = '@Url.Content("~/Content")';
+        chavah.constants.scriptsDirectory = '@Url.Content("~/Scripts")';
+        var userId = chavah.localstorage.getOrCreateUserId();
+        var viewModel = new chavah.mainViewModel($(this));
+        chavah.viewModel = viewModel;
+        ko.applyBindings(viewModel);
+
+        PubSub.subscribe("PlaySong", function (message, args) {
+            if (viewModel.currentSong()) {
+                viewModel.player.pause();
+                viewModel.pushRecentSong(viewModel.currentSong());
+            }
+
+            $(".current-song").fadeOut(250, function () {
+                viewModel.currentSong(args.song);
+                $(".current-song").fadeIn(250);
+            });
+        });
+
+        PubSub.subscribe("TogglePlayPause", function (message, args) {
+            viewModel.player.playPause();
+        });
+
+        PubSub.subscribe("Pause", function (message, args) {
+            if (viewModel.currentSong()) {
+                viewModel.player.pause();
+            }
+        });
+
+        chavah.dataServices.start();
+        var songIdQuery = parseInt(location.search.replace("?song=", ''), 10);
+        if (songIdQuery > 0) {
+            PubSub.publish("PlaySongById", { songId: songIdQuery });
+        }
+        else {
+            viewModel.nextSong();
+        }
+    });
+
+</script>
+<script>
+
+
+        $(document).ready(function () {
+            $("#panelBar").kendoPanelBar();
+        });
+
+    </script>
