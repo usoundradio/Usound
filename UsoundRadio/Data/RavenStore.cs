@@ -12,8 +12,6 @@ namespace UsoundRadio.Data
 {
     public class RavenStore
     {
-        private static IDocumentStore instance;
-
         public static IDocumentStore Instance
         {
             get

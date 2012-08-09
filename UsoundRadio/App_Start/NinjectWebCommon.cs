@@ -12,6 +12,8 @@ namespace UsoundRadio.App_Start
     using UsoundRadio.Data;
     using UsoundRadio.Utils;
     using Raven.Client;
+    using Griffin.MvcContrib.Providers.Membership;
+    using Griffin.MvcContrib.RavenDb.Providers;
 
     public static class NinjectWebCommon 
     {
@@ -65,6 +67,15 @@ namespace UsoundRadio.App_Start
                 .Bind<IDocumentStore>()
                 .ToConstant(RavenStore.CreateDocumentStore())
                 .InSingletonScope();
+
+            kernel
+                .Bind<IAccountRepository>()
+                .ToMethod(context => 
+                    {
+                        var session = RavenStore.Instance.OpenSession();
+                        return new RavenDbAccountRepository(session);
+                    })
+                .InRequestScope();
         }        
     }
 }
