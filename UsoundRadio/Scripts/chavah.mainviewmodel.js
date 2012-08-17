@@ -95,6 +95,27 @@
 	    PubSub.publish("NextSong");
 	}
 
+	this.uploadMusic = function () {
+	    filepicker.getFile(['audio/mpeg'], {
+	        'multiple': true, 'container': 'window',
+	        'services': [
+                filepicker.SERVICES.COMPUTER,
+                filepicker.SERVICES.URL,
+                filepicker.SERVICES.DROPBOX,
+                filepicker.SERVICES.GOOGLE_DRIVE,
+                filepicker.SERVICES.GMAIL]
+	    }, function (uploadedFiles) {
+	        console.log(uploadedFiles);
+	        // This function is invoked when the files finish uploading.
+	        // We're passed uploadedFiles, which is an array of objects that look like this:
+            // { url: "http://filepickerserver/asdfqw35134", data: { size: 12342134, type: "audio/mpeg", filename: "foo.mp3" } }
+	        uploadedFiles.forEach(function (file) {
+	            var postArgs = { url: "/UploadSong", data: { address: file.url, fileName: file.data.filename } };
+	            PubSub.publish("Post", postArgs);
+	        });
+	    });
+	}
+
 	this.requestSelectedSong = function () {
 	    var selectedSong = self.selectedSongRequest();
 	    if (selectedSong) {

@@ -18,6 +18,14 @@
             });
         });
 
+        PubSub.subscribe("Post", function (message, args) {
+            $.post("/Songs" + args.url, args.data).success(function (result) {
+                if (args.responseMessage) {
+                    PubSub.publish(args.responseMessage, results);
+                }
+            });
+        });
+
         // When the the PlaySongById message is sent, we do an AJAX call to fetch
         // the song, then publish the SongFetched message when done.
         PubSub.subscribe("PlaySongById", function (message, args) {

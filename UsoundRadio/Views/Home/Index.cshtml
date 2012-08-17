@@ -3,6 +3,7 @@
     <button data-bind="click: toggleSongRequestDialogVisible" src="@Url.Content("~/content/images/request.png")" title="Got a song request?">Song Request</button>
     <button class="song-control" data-bind="click: playPause, attr: { src: playImage }">Play/Pause</button>
     <button class="song-control" data-bind="click: nextSong" src="@Url.Content("~/content/images/next.png")">Next</button>
+    <div class="upload-container"><a href="#" data-bind="click: uploadMusic">Upload your music</a></div>
 </div>
 
 <table id="songs-table">
@@ -93,8 +94,8 @@
 
     $(function () {
 
-        // Required for IE if we're making cross-site calls.
-        jQuery.support.cors = true;
+        // Set up Filepicker.io with our API key
+        filepicker.setKey('ApVE_5eOHS-CEcBP-gCUCz');
 
         chavah.constants.contentDirectory = '@Url.Content("~/Content")';
         chavah.constants.scriptsDirectory = '@Url.Content("~/Scripts")';

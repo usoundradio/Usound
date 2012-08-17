@@ -11,6 +11,9 @@ using UsoundRadio.Models;
 using UsoundRadio.Utils;
 using UsoundRadio.Common;
 using System.Threading.Tasks;
+using System.Reactive;
+using System.Reactive.Linq;
+using System.ComponentModel;
 
 namespace UsoundRadio.Controllers
 {
@@ -32,12 +35,13 @@ namespace UsoundRadio.Controllers
             var matches = matchingSongNames
                 .Concat(matchingArtists)
                 .Concat(matchingAlbums)
-               .Concat(matchingGenres)
-               .Concat(matchingCountries)
+                .Concat(matchingGenres)
+                .Concat(matchingCountries)
                 .Take(50)
                 .Select(s => s.ToDto(SongLike.None));
             return Json(matches, JsonRequestBehavior.AllowGet);
         }
+
         public JsonResult GetSongs()
         {
             var allSongs = CachedSongs;
@@ -210,6 +214,19 @@ namespace UsoundRadio.Controllers
             }
 
             return Json(new Song[0], JsonRequestBehavior.AllowGet);
+        }
+
+        public Task UploadSong(Uri address, string fileName)
+        {
+            var downloader = new System.Net.WebClient();
+            var filePath = Path.Combine(Constants.MusicDirectory, fileName);
+            return Task.Factory.StartNew(() =>
+                {
+                    using (var webClient = new System.Net.WebClient())
+                    {
+                        webClient.DownloadFile(address, filePath);
+                    }
+                });
         }
 
         public JsonResult GetTopSongs(int count)

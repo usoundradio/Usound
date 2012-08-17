@@ -70,7 +70,7 @@ namespace UsoundRadio.App_Start
 
             kernel
                 .Bind<IAccountRepository>()
-                .ToMethod(context => 
+                .ToMethod(context =>
                     {
                         var session = RavenStore.Instance.OpenSession();
                         return new RavenDbAccountRepository(session);
