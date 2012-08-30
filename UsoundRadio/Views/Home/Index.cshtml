@@ -165,15 +165,34 @@
                                                 url: crudServiceBaseUrl + "GetSongs",
                                                 dataType: "json"
                                             },
+                                            
+                                            update: {
+                                                url: crudServiceBaseUrl + "UpdateSongs",
+                                                contentType: "application/json",
+                                                type: "POST"
+                                            },
 
                                             parameterMap: function (options, operation) {
                                                 if (operation !== "read" && options.models) {
-                                                    return { models: kendo.stringify(options.models) };
+                                                    return kendo.stringify(options.models);
                                                 }
                                             }
                                         },
                                         batch: true,
-                                        pageSize: 30
+                                        pageSize: 30,
+                                        schema: {
+                                            model: {
+                                                id: "Id",
+                                                fields: {
+                                                    Id: { editable: false, nullable: true },
+                                                    Name: { type: "string", validation: { required: true } },
+                                                    Genre: { type: "string" },
+                                                    Album: { type: "string" },
+                                                    Artist: { type: "string" },
+                                                    Country: { type: "string" }
+                                                }
+                                            }
+                                        }
 
                                     });
 
@@ -184,15 +203,16 @@
                                     sortable: true,
                                     selectable: true,
 
-
                                     columns: [
                                         { field: "Name", title: "Song" },
                                         { field: "Album", title: "Album" },
                                         { field: "Artist", title: "Artist" },
                                         { field: "Genre", title: "Genre" },
                                         { field: "Country", title: "Country" },
-
-                                    ]
+                                        { command: ["edit"], title: "&nbsp;", width: "210px" }
+                                    ],
+                                    
+                                    editable: "popup"
 
                                 });
                             });

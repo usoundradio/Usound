@@ -3,7 +3,6 @@ using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using System.Web;
 using System.Web.Mvc;
 using PrairieAsunder.Models;
 using UsoundRadio.Data;
@@ -11,9 +10,6 @@ using UsoundRadio.Models;
 using UsoundRadio.Utils;
 using UsoundRadio.Common;
 using System.Threading.Tasks;
-using System.Reactive;
-using System.Reactive.Linq;
-using System.ComponentModel;
 
 namespace UsoundRadio.Controllers
 {
@@ -49,6 +45,22 @@ namespace UsoundRadio.Controllers
             return Json(allSongs, JsonRequestBehavior.AllowGet);
         }
 
+        [HttpPost]
+        public JsonResult UpdateSongs(IEnumerable<Song> songs)
+        {
+            using (var session = RavenStore.Instance.OpenSession())
+            {
+                foreach (var song in songs)
+                {
+                    session.Store(song);
+                }
+
+                session.SaveChanges();
+            }
+
+            return Json(songs, JsonRequestBehavior.AllowGet);
+        }
+
         public JsonResult GetSongForClient(Guid clientId)
         {
             try
@@ -70,7 +82,7 @@ namespace UsoundRadio.Controllers
             {
                 var song = session.Query<Song>().First(s => s.Id == songId);
                 var albumArtFile = Directory.EnumerateFiles(Constants.AlbumArtDirectory, string.Format("{0} - {1}*", song.Artist, song.Album)).FirstOrDefault();
-                var artFileOrDefaultPath = albumArtFile != null ? albumArtFile : Path.Combine(Constants.AlbumArtDirectory, "default.jpg");
+                var artFileOrDefaultPath = albumArtFile ?? Path.Combine(Constants.AlbumArtDirectory, "default.jpg");
                 return File(artFileOrDefaultPath, "image/jpeg");
             }
         }
@@ -138,11 +150,9 @@ namespace UsoundRadio.Controllers
                 {
                     return GetSongById(clientId, song.Id);
                 }
-                else
-                {
-                    RavenStore.Log("Unable to find an album matching name " + album);
-                    return GetSongForClient(clientId);
-                }
+                
+                RavenStore.Log("Unable to find an album matching name " + album);
+                return GetSongForClient(clientId);
             }
         }
 
@@ -352,7 +362,7 @@ namespace UsoundRadio.Controllers
             return desiredValueTrimmed;
         }
 
-        private SongLike GetLikeStatusForSong(Song song, Like[] userSongPreferences)
+        private SongLike GetLikeStatusForSong(Song song, IEnumerable<Like> userSongPreferences)
         {
             var likeDislikeForThisSong = userSongPreferences.FirstOrDefault(l => l.SongId == song.Id);
             return likeDislikeForThisSong.ToSongLikeEnum();
@@ -401,7 +411,7 @@ namespace UsoundRadio.Controllers
             return allSongsInDatabase.Except(deletedSongs).ToList();
         }
 
-        private static List<Song> WeedOutSongsDeletedFromDatabase(List<Song> allSongsInDatabase)
+        private static List<Song> WeedOutSongsDeletedFromDatabase(IEnumerable<Song> allSongsInDatabase)
         {
             var songsOnDisk = Directory
                 .EnumerateFiles(Constants.MusicDirectory, "*.mp3")
