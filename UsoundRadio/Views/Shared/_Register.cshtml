@@ -1,0 +1,52 @@
+﻿@model UsoundRadio.Models.RegisterModel
+@{
+    ViewBag.Title = "Register";
+}
+
+<div style="width:500px;">
+     
+    <div style="width:250px; float:left">
+
+
+@using (Html.BeginForm()) {
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary()
+    
+<section id="loginForm">
+<h2 style="width:235px">Use an existing account to log in.</h2>
+@using (Html.BeginForm(new { ReturnUrl = ViewBag.ReturnUrl })) {
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+
+   <fieldset>
+        <legend>Registration Form</legend>
+        <ol>
+            <li>
+                @Html.LabelFor(m => m.UserName)
+                @Html.TextBoxFor(m => m.UserName)
+            </li>
+            <li>
+                @Html.LabelFor(m => m.Password)
+                @Html.PasswordFor(m => m.Password)
+            </li>
+            <li>
+                @Html.LabelFor(m => m.ConfirmPassword)
+                @Html.PasswordFor(m => m.ConfirmPassword)
+            </li>
+        </ol>
+        <button class="thoughtbot" type="submit" value="Register">Register</button>
+    </fieldset>
+}
+</section>
+}
+     </div>
+    <div style="width:250px; float:left;">
+<section id="socialLoginForm">
+    <h2 style="width:180px">Easily register with the following services.</h2>
+    @Html.Action("ExternalLoginsList", new { ReturnUrl = ViewBag.ReturnUrl })
+</section>
+        </div>
+    </div>
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

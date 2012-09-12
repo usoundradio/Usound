@@ -1,0 +1,243 @@
+﻿
+
+
+
+<div style="width:1024px; margin: 0 auto; margin-top:15px">
+
+    <div style="float:left; width:400px">
+      <div id="example">
+          <img src="../../Content/Images/Slideshow/new-ribbon.png" width="112" height="112" alt="New Ribbon" id="ribbon">
+                            <div id="slides">
+                                <div class="slides_container">
+                                    <div class="slide">                                       <img src="/Content/Images/SlideShow/Dancers No Music Notes.png" height="260" style="margin-left:60px; margin-top:10px"alt="Slide 1" />
+                                        <div class="caption" style="bottom:0">
+<p>Driven by Listeners</p>                                        </div>
+                                    </div>
+                                    <div class="slide">                                       <a href="/Content/Images/SlideShow/rockband.png"  title="Musician" target="_blank"><img src="/Content/Images/SlideShow/Musician Silhouette (1).png" alt="Slide 2" height="260" style="margin-left:80px"/></a>
+                                        <div class="caption">
+<p>Built by Musicians.</p>                                        </div>
+                                    </div>
+                                    <div class="slide">                                       <a href="/Content/Images/SlideShow/promoter.png"  title="Promoter" target="_blank"><img src="/Content/Images/SlideShow/Promoters.png" alt="Slide 2" height="260" style="margin-left:80px"/></a>
+                                        <div class="caption">
+<p>Inspired by Promoters.</p>                                      
+
+                                        </div>
+                                    </div>
+                                    <div class="slide">                                       <a href="/Content/Images/logosmall.png"  title="Usound Radio" target="_blank"><img src="/Content/Images/LogoSmall.png" alt="UsoundRadio" height="60"/></a>
+                                        <div class="caption">
+<p></p>                                      
+
+                                        </div>
+                                    </div>
+                                </div>
+                                                           </div>
+          <div style="height:330px">&nbsp</div>
+                            <img src="../../Content/images/slideshow/example-frame.png" alt="Example Frame" id="frame" /> 
+     
+         <div id="tabstrip">
+    <ul>
+        <li class="k-state-active" style="width:140px; border:none">Register</li>
+   
+    </ul>
+    <div>
+       <div>@Html.Partial("_Register")</div>
+    </div>
+    <div>@Html.Partial("_LogOn")</div>
+</div>
+          <script>
+              $("#tabstrip").kendoTabStrip({
+                  animation: {
+                      // fade-out current tab over 1000 milliseconds
+                      close: {
+                          duration: 1000,
+                          effects: "fadeOut"
+                      },
+                      // fade-in new tab over 500 milliseconds
+                      open: {
+                          duration: 500,
+                          effects: "fadeIn"
+                      }
+                  }
+              });
+          </script>
+            <style>
+                .upcomingfeatures
+                {
+                    width:210px;
+             
+                }
+                .upcomingfeatures li 
+                {
+                    font-size:20px;
+                    text-align:start;
+                }
+                   #tabstrip {
+                       font-size:15px;
+                       font-weight:bold;
+        height:  auto;
+ 
+        width: 520px;
+        border:none;
+        -webkit-border-bottom-right-radius: 15px;
+-webkit-border-bottom-left-radius: 15px;
+-moz-border-radius-bottomright: 15px;
+-moz-border-radius-bottomleft: 15px;
+border-bottom-right-radius: 15px;
+border-bottom-left-radius: 15px;
+-webkit-box-shadow: -9px 5px 20px rgba(50, 50, 50, 0.53);
+-moz-box-shadow:    -9px 5px 20px rgba(50, 50, 50, 0.53);
+box-shadow:         -9px 5px 20px rgba(50, 50, 50, 0.53);
+
+
+       
+    
+    }
+    #tabstrip .k-content 
+    {
+    	height: 360px;
+    	overflow: auto;
+        
+        background: -moz-linear-gradient(top,  rgba(255,255,255,1) 0%, rgba(255,255,255,0) 100%); /* FF3.6+ */
+background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(255,255,255,1)), color-stop(100%,rgba(255,255,255,0))); /* Chrome,Safari4+ */
+background: -webkit-linear-gradient(top,  rgba(255,255,255,1) 0%,rgba(255,255,255,0) 100%); /* Chrome10+,Safari5.1+ */
+background: -o-linear-gradient(top,  rgba(255,255,255,1) 0%,rgba(255,255,255,0) 100%); /* Opera 11.10+ */
+background: -ms-linear-gradient(top,  rgba(255,255,255,1) 0%,rgba(255,255,255,0) 100%); /* IE10+ */
+background: linear-gradient(to bottom,  rgba(255,255,255,1) 0%,rgba(255,255,255,0) 100%); /* W3C */
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#00ffffff',GradientType=0 ); /* IE6-9 */
+        border:none;
+        overflow:hidden;
+    }
+                .bottomquote div
+                {
+                    padding:10px;
+                }
+            </style>
+
+      </div>
+                 </div>  
+   
+
+   
+   
+    
+  <div style="float:right; margin-right:-20px">
+<ol class="round" style=" width:450px; margin-top:-20px">
+  
+
+    <li class="one">
+        <h5>Listeners</h5>
+
+Usound Radio allows listeners to customize radio stations to their preferences of location, and genre. Listeners can also search through all of the songs uploaded to Usound Radio by title, musician, album, genre, and location. Listeners can build custom playlists and create new radio stations at any time for free. 
+        <a href="http://go.microsoft.com/fwlink/?LinkId=245151">Learn more…</a>
+    </li>
+   
+      <li class="two">
+        <h5>Musicians</h5>
+  Musicians who use Usound Radio are given an opportunity to promote their talent. Immediately after a musician uploads music to Usound Radio it will be heard by listeners all over the world. If a musician owns the copyright to their music they can upload or remove it at any time.
+Promoters
+
+        <a href="http://go.microsoft.com/fwlink/?LinkId=245151">Learn more…</a>
+    </li>
+    <li class="three">
+        <h5>Promoters</h5>
+     Usound Radio helps promoters get their clients heard by a larger audience, and they can search out new potential clients. If promoters want, they can purchase data reports on musician’s popularity and demographics.
+
+        <a href="http://go.microsoft.com/fwlink/?LinkId=245157">Learn more…</a>
+    </li>
+</ol>
+      <div align="center">
+    <button class="thoughtbot" style="width:200px;height:50px" onClick="location.href='Home/index'" >Listen Now</button>
+          <button class="thoughtbot"  style="width:200px;height:50px">Tour</button></div>
+      <div class="bottomquote" style="width:420px; margin-left:80px">
+      <div style="font-size:30px; margin-top:10px; margin-left:15px">Get ready for even more!</div>
+      <div style="font-size:20px">Usound Radio has several great additional features that are under development. Some include...</div>
+<table style="margin-top:-20px;" cell-spacing="0" cell-padding="0">
+    <tr>
+        <td>
+ <img src="http://ebb-tide.us/People-Dancing-Silhouette-psd9849.png" width="180px"/>
+        </td>
+        <td>
+            <div class="upcomingfeatures">
+             <li>Push to Play </li><br />
+          <li>Purchase Music</li><br />
+                   <li>Sell Music</li><br />
+          <li>Notifications!</li><br />
+          <li>and more..</li></div></td>
+    </tr>
+</table>
+      
+        
+         
+          
+         
+
+      </div>
+        
+
+      </div>
+    </div>
+  
+  
+      
+
+
+
+
+ 
+<div id="fb-root"></div>
+<script>(function (d, s, id) {
+    var js, fjs = d.getElementsByTagName(s)[0];
+    if (d.getElementById(id)) return;
+    js = d.createElement(s); js.id = id;
+    js.src = "//connect.facebook.net/en_US/all.js#xfbml=1&appId=454524694568019";
+    fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+   
+ 
+
+	<script>
+	    $(function () {
+	        $('#slides').slides({
+	            preload: true,
+	            preloadImage: '../../Content/Images/Slideshow/loading.gif',
+	            play: 5000,
+	            pause: 2500,
+	            hoverPause: true,
+	            animationStart: function (current) {
+	                $('.caption').animate({
+	                    bottom: -35
+	                }, 100);
+	                if (window.console && console.log) {
+	                    // example return of current slide number
+	                    console.log('animationStart on slide: ', current);
+	                };
+	            },
+	            animationComplete: function (current) {
+	                $('.caption').animate({
+	                    bottom: 0
+	                }, 200);
+	                if (window.console && console.log) {
+	                    // example return of current slide number
+	                    console.log('animationComplete on slide: ', current);
+	                };
+	            },
+	            slidesLoaded: function () {
+	                $('.caption').animate({
+	                    bottom: 0
+	                }, 200);
+	            }
+	        });
+	    });
+	</script>
+
+
+
+ 
+
+
+
+
+
+
+

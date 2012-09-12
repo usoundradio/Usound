@@ -1,67 +1,109 @@
-C:\Users\Logan Head\Desktop\UsoundRadioBeta\PrairieAsunder\bin\UsoundRadio.dll
-C:\Users\Logan Head\Desktop\UsoundRadioBeta\PrairieAsunder\bin\UsoundRadio.pdb
-C:\Users\Logan Head\Desktop\UsoundRadioBeta\PrairieAsunder\bin\BouncyCastle.Crypto.dll
-C:\Users\Logan Head\Desktop\UsoundRadioBeta\PrairieAsunder\bin\EntityFramework.dll
-C:\Users\Logan Head\Desktop\UsoundRadioBeta\PrairieAsunder\bin\Esent.Interop.dll
-C:\Users\Logan Head\Desktop\UsoundRadioBeta\PrairieAsunder\bin\ICSharpCode.NRefactory.dll
-C:\Users\Logan Head\Desktop\UsoundRadioBeta\PrairieAsunder\bin\Lucene.Net.Contrib.Spatial.dll
-C:\Users\Logan Head\Desktop\UsoundRadioBeta\PrairieAsunder\bin\Lucene.Net.Contrib.SpellChecker.dll
-C:\Users\Logan Head\Desktop\UsoundRadioBeta\PrairieAsunder\bin\Lucene.Net.dll
-C:\Users\Logan Head\Desktop\UsoundRadioBeta\PrairieAsunder\bin\Microsoft.Web.Infrastructure.dll
-C:\Users\Logan Head\Desktop\UsoundRadioBeta\PrairieAsunder\bin\Newtonsoft.Json.dll
-C:\Users\Logan Head\Desktop\UsoundRadioBeta\PrairieAsunder\bin\Ninject.dll
-C:\Users\Logan Head\Desktop\UsoundRadioBeta\PrairieAsunder\bin\Ninject.Web.Common.dll
-C:\Users\Logan Head\Desktop\UsoundRadioBeta\PrairieAsunder\bin\NLog.dll
-C:\Users\Logan Head\Desktop\UsoundRadioBeta\PrairieAsunder\bin\NuGet.Core.dll
-C:\Users\Logan Head\Desktop\UsoundRadioBeta\PrairieAsunder\bin\Raven.Abstractions.dll
-C:\Users\Logan Head\Desktop\UsoundRadioBeta\PrairieAsunder\bin\Raven.Backup.exe
-C:\Users\Logan Head\Desktop\UsoundRadioBeta\PrairieAsunder\bin\Raven.Client.Embedded.dll
-C:\Users\Logan Head\Desktop\UsoundRadioBeta\PrairieAsunder\bin\Raven.Client.Lightweight.dll
-C:\Users\Logan Head\Desktop\UsoundRadioBeta\PrairieAsunder\bin\Raven.Client.MvcIntegration.dll
-C:\Users\Logan Head\Desktop\UsoundRadioBeta\PrairieAsunder\bin\Raven.Database.dll
-C:\Users\Logan Head\Desktop\UsoundRadioBeta\PrairieAsunder\bin\Raven.Munin.dll
-C:\Users\Logan Head\Desktop\UsoundRadioBeta\PrairieAsunder\bin\Raven.Smuggler.exe
-C:\Users\Logan Head\Desktop\UsoundRadioBeta\PrairieAsunder\bin\Raven.Storage.Esent.dll
-C:\Users\Logan Head\Desktop\UsoundRadioBeta\PrairieAsunder\bin\Raven.Storage.Managed.dll
-C:\Users\Logan Head\Desktop\UsoundRadioBeta\PrairieAsunder\bin\Spatial4n.Core.dll
-C:\Users\Logan Head\Desktop\UsoundRadioBeta\PrairieAsunder\bin\System.Interactive.dll
-C:\Users\Logan Head\Desktop\UsoundRadioBeta\PrairieAsunder\bin\System.Reactive.dll
-C:\Users\Logan Head\Desktop\UsoundRadioBeta\PrairieAsunder\bin\WebActivator.dll
-C:\Users\Logan Head\Desktop\UsoundRadioBeta\PrairieAsunder\bin\BouncyCastle.Crypto.pdb
-C:\Users\Logan Head\Desktop\UsoundRadioBeta\PrairieAsunder\bin\EntityFramework.xml
-C:\Users\Logan Head\Desktop\UsoundRadioBeta\PrairieAsunder\bin\Esent.Interop.pdb
-C:\Users\Logan Head\Desktop\UsoundRadioBeta\PrairieAsunder\bin\Esent.Interop.xml
-C:\Users\Logan Head\Desktop\UsoundRadioBeta\PrairieAsunder\bin\Lucene.Net.pdb
-C:\Users\Logan Head\Desktop\UsoundRadioBeta\PrairieAsunder\bin\Lucene.Net.xml
-C:\Users\Logan Head\Desktop\UsoundRadioBeta\PrairieAsunder\bin\Lucene.Net.Contrib.Spatial.pdb
-C:\Users\Logan Head\Desktop\UsoundRadioBeta\PrairieAsunder\bin\Lucene.Net.Contrib.Spatial.xml
-C:\Users\Logan Head\Desktop\UsoundRadioBeta\PrairieAsunder\bin\Lucene.Net.Contrib.SpellChecker.pdb
-C:\Users\Logan Head\Desktop\UsoundRadioBeta\PrairieAsunder\bin\Lucene.Net.Contrib.SpellChecker.xml
-C:\Users\Logan Head\Desktop\UsoundRadioBeta\PrairieAsunder\bin\Newtonsoft.Json.pdb
-C:\Users\Logan Head\Desktop\UsoundRadioBeta\PrairieAsunder\bin\Newtonsoft.Json.xml
-C:\Users\Logan Head\Desktop\UsoundRadioBeta\PrairieAsunder\bin\Ninject.pdb
-C:\Users\Logan Head\Desktop\UsoundRadioBeta\PrairieAsunder\bin\Ninject.xml
-C:\Users\Logan Head\Desktop\UsoundRadioBeta\PrairieAsunder\bin\Ninject.Web.Common.pdb
-C:\Users\Logan Head\Desktop\UsoundRadioBeta\PrairieAsunder\bin\Ninject.Web.Common.xml
-C:\Users\Logan Head\Desktop\UsoundRadioBeta\PrairieAsunder\bin\NLog.xml
-C:\Users\Logan Head\Desktop\UsoundRadioBeta\PrairieAsunder\bin\Raven.Abstractions.pdb
-C:\Users\Logan Head\Desktop\UsoundRadioBeta\PrairieAsunder\bin\Raven.Abstractions.xml
-C:\Users\Logan Head\Desktop\UsoundRadioBeta\PrairieAsunder\bin\Raven.Backup.pdb
-C:\Users\Logan Head\Desktop\UsoundRadioBeta\PrairieAsunder\bin\Raven.Client.Embedded.pdb
-C:\Users\Logan Head\Desktop\UsoundRadioBeta\PrairieAsunder\bin\Raven.Client.Embedded.xml
-C:\Users\Logan Head\Desktop\UsoundRadioBeta\PrairieAsunder\bin\Raven.Client.Lightweight.pdb
-C:\Users\Logan Head\Desktop\UsoundRadioBeta\PrairieAsunder\bin\Raven.Client.Lightweight.xml
-C:\Users\Logan Head\Desktop\UsoundRadioBeta\PrairieAsunder\bin\Raven.Client.MvcIntegration.pdb
-C:\Users\Logan Head\Desktop\UsoundRadioBeta\PrairieAsunder\bin\Raven.Database.pdb
-C:\Users\Logan Head\Desktop\UsoundRadioBeta\PrairieAsunder\bin\Raven.Database.xml
-C:\Users\Logan Head\Desktop\UsoundRadioBeta\PrairieAsunder\bin\Raven.Munin.pdb
-C:\Users\Logan Head\Desktop\UsoundRadioBeta\PrairieAsunder\bin\Raven.Munin.xml
-C:\Users\Logan Head\Desktop\UsoundRadioBeta\PrairieAsunder\bin\Raven.Smuggler.pdb
-C:\Users\Logan Head\Desktop\UsoundRadioBeta\PrairieAsunder\bin\Raven.Storage.Esent.pdb
-C:\Users\Logan Head\Desktop\UsoundRadioBeta\PrairieAsunder\bin\Raven.Storage.Managed.pdb
-C:\Users\Logan Head\Desktop\UsoundRadioBeta\PrairieAsunder\bin\Spatial4n.Core.pdb
-C:\Users\Logan Head\Desktop\UsoundRadioBeta\PrairieAsunder\bin\System.Interactive.xml
-C:\Users\Logan Head\Desktop\UsoundRadioBeta\PrairieAsunder\bin\System.Reactive.xml
-C:\Users\Logan Head\Desktop\UsoundRadioBeta\PrairieAsunder\obj\Release\UsoundRadio.csprojResolveAssemblyReference.cache
-C:\Users\Logan Head\Desktop\UsoundRadioBeta\PrairieAsunder\obj\Release\UsoundRadio.dll
-C:\Users\Logan Head\Desktop\UsoundRadioBeta\PrairieAsunder\obj\Release\UsoundRadio.pdb
+C:\Users\Logan\Documents\Visual Studio 2012\Projects\UsoundRadio\UsoundRadio\bin\UsoundRadio.dll
+C:\Users\Logan\Documents\Visual Studio 2012\Projects\UsoundRadio\UsoundRadio\bin\UsoundRadio.pdb
+C:\Users\Logan\Documents\Visual Studio 2012\Projects\UsoundRadio\UsoundRadio\bin\Antlr3.Runtime.dll
+C:\Users\Logan\Documents\Visual Studio 2012\Projects\UsoundRadio\UsoundRadio\bin\DotNetOpenAuth.AspNet.dll
+C:\Users\Logan\Documents\Visual Studio 2012\Projects\UsoundRadio\UsoundRadio\bin\DotNetOpenAuth.Core.dll
+C:\Users\Logan\Documents\Visual Studio 2012\Projects\UsoundRadio\UsoundRadio\bin\DotNetOpenAuth.OAuth.Consumer.dll
+C:\Users\Logan\Documents\Visual Studio 2012\Projects\UsoundRadio\UsoundRadio\bin\DotNetOpenAuth.OAuth.dll
+C:\Users\Logan\Documents\Visual Studio 2012\Projects\UsoundRadio\UsoundRadio\bin\DotNetOpenAuth.OpenId.dll
+C:\Users\Logan\Documents\Visual Studio 2012\Projects\UsoundRadio\UsoundRadio\bin\DotNetOpenAuth.OpenId.RelyingParty.dll
+C:\Users\Logan\Documents\Visual Studio 2012\Projects\UsoundRadio\UsoundRadio\bin\EntityFramework.dll
+C:\Users\Logan\Documents\Visual Studio 2012\Projects\UsoundRadio\UsoundRadio\bin\Microsoft.Web.Infrastructure.dll
+C:\Users\Logan\Documents\Visual Studio 2012\Projects\UsoundRadio\UsoundRadio\bin\Microsoft.Web.WebPages.OAuth.dll
+C:\Users\Logan\Documents\Visual Studio 2012\Projects\UsoundRadio\UsoundRadio\bin\Newtonsoft.Json.dll
+C:\Users\Logan\Documents\Visual Studio 2012\Projects\UsoundRadio\UsoundRadio\bin\System.Net.Http.Formatting.dll
+C:\Users\Logan\Documents\Visual Studio 2012\Projects\UsoundRadio\UsoundRadio\bin\System.Web.Helpers.dll
+C:\Users\Logan\Documents\Visual Studio 2012\Projects\UsoundRadio\UsoundRadio\bin\System.Web.Http.dll
+C:\Users\Logan\Documents\Visual Studio 2012\Projects\UsoundRadio\UsoundRadio\bin\System.Web.Http.WebHost.dll
+C:\Users\Logan\Documents\Visual Studio 2012\Projects\UsoundRadio\UsoundRadio\bin\System.Web.Mvc.dll
+C:\Users\Logan\Documents\Visual Studio 2012\Projects\UsoundRadio\UsoundRadio\bin\System.Web.Optimization.dll
+C:\Users\Logan\Documents\Visual Studio 2012\Projects\UsoundRadio\UsoundRadio\bin\System.Web.Razor.dll
+C:\Users\Logan\Documents\Visual Studio 2012\Projects\UsoundRadio\UsoundRadio\bin\System.Web.WebPages.Deployment.dll
+C:\Users\Logan\Documents\Visual Studio 2012\Projects\UsoundRadio\UsoundRadio\bin\System.Web.WebPages.dll
+C:\Users\Logan\Documents\Visual Studio 2012\Projects\UsoundRadio\UsoundRadio\bin\System.Web.WebPages.Razor.dll
+C:\Users\Logan\Documents\Visual Studio 2012\Projects\UsoundRadio\UsoundRadio\bin\WebGrease.dll
+C:\Users\Logan\Documents\Visual Studio 2012\Projects\UsoundRadio\UsoundRadio\bin\WebMatrix.Data.dll
+C:\Users\Logan\Documents\Visual Studio 2012\Projects\UsoundRadio\UsoundRadio\bin\WebMatrix.WebData.dll
+C:\Users\Logan\Documents\Visual Studio 2012\Projects\UsoundRadio\UsoundRadio\bin\Org.Mentalis.Security.Cryptography.dll
+C:\Users\Logan\Documents\Visual Studio 2012\Projects\UsoundRadio\UsoundRadio\bin\NLog.dll
+C:\Users\Logan\Documents\Visual Studio 2012\Projects\UsoundRadio\UsoundRadio\bin\Lucene.Net.dll
+C:\Users\Logan\Documents\Visual Studio 2012\Projects\UsoundRadio\UsoundRadio\bin\ICSharpCode.NRefactory.dll
+C:\Users\Logan\Documents\Visual Studio 2012\Projects\UsoundRadio\UsoundRadio\bin\Lucene.Net.Contrib.SpellChecker.dll
+C:\Users\Logan\Documents\Visual Studio 2012\Projects\UsoundRadio\UsoundRadio\bin\Spatial4n.Core.dll
+C:\Users\Logan\Documents\Visual Studio 2012\Projects\UsoundRadio\UsoundRadio\bin\Lucene.Net.Contrib.Spatial.dll
+C:\Users\Logan\Documents\Visual Studio 2012\Projects\UsoundRadio\UsoundRadio\bin\BouncyCastle.Crypto.dll
+C:\Users\Logan\Documents\Visual Studio 2012\Projects\UsoundRadio\UsoundRadio\bin\Esent.Interop.dll
+C:\Users\Logan\Documents\Visual Studio 2012\Projects\UsoundRadio\UsoundRadio\bin\Mono.Math.dll
+C:\Users\Logan\Documents\Visual Studio 2012\Projects\UsoundRadio\UsoundRadio\bin\DotNetOpenAuth.AspNet.xml
+C:\Users\Logan\Documents\Visual Studio 2012\Projects\UsoundRadio\UsoundRadio\bin\DotNetOpenAuth.Core.xml
+C:\Users\Logan\Documents\Visual Studio 2012\Projects\UsoundRadio\UsoundRadio\bin\DotNetOpenAuth.OAuth.xml
+C:\Users\Logan\Documents\Visual Studio 2012\Projects\UsoundRadio\UsoundRadio\bin\DotNetOpenAuth.OAuth.Consumer.xml
+C:\Users\Logan\Documents\Visual Studio 2012\Projects\UsoundRadio\UsoundRadio\bin\DotNetOpenAuth.OpenId.xml
+C:\Users\Logan\Documents\Visual Studio 2012\Projects\UsoundRadio\UsoundRadio\bin\DotNetOpenAuth.OpenId.RelyingParty.xml
+C:\Users\Logan\Documents\Visual Studio 2012\Projects\UsoundRadio\UsoundRadio\bin\Griffin.MvcContrib.xml
+C:\Users\Logan\Documents\Visual Studio 2012\Projects\UsoundRadio\UsoundRadio\bin\Griffin.MvcContrib.RavenDb.xml
+C:\Users\Logan\Documents\Visual Studio 2012\Projects\UsoundRadio\UsoundRadio\bin\Ninject.pdb
+C:\Users\Logan\Documents\Visual Studio 2012\Projects\UsoundRadio\UsoundRadio\bin\Ninject.xml
+C:\Users\Logan\Documents\Visual Studio 2012\Projects\UsoundRadio\UsoundRadio\bin\Ninject.Web.Common.pdb
+C:\Users\Logan\Documents\Visual Studio 2012\Projects\UsoundRadio\UsoundRadio\bin\Ninject.Web.Common.xml
+C:\Users\Logan\Documents\Visual Studio 2012\Projects\UsoundRadio\UsoundRadio\bin\Raven.Abstractions.pdb
+C:\Users\Logan\Documents\Visual Studio 2012\Projects\UsoundRadio\UsoundRadio\bin\Raven.Abstractions.xml
+C:\Users\Logan\Documents\Visual Studio 2012\Projects\UsoundRadio\UsoundRadio\bin\Raven.Client.Embedded.pdb
+C:\Users\Logan\Documents\Visual Studio 2012\Projects\UsoundRadio\UsoundRadio\bin\Raven.Client.Embedded.xml
+C:\Users\Logan\Documents\Visual Studio 2012\Projects\UsoundRadio\UsoundRadio\bin\Raven.Client.Lightweight.pdb
+C:\Users\Logan\Documents\Visual Studio 2012\Projects\UsoundRadio\UsoundRadio\bin\Raven.Client.Lightweight.xml
+C:\Users\Logan\Documents\Visual Studio 2012\Projects\UsoundRadio\UsoundRadio\bin\Raven.Client.MvcIntegration.pdb
+C:\Users\Logan\Documents\Visual Studio 2012\Projects\UsoundRadio\UsoundRadio\bin\Raven.Database.pdb
+C:\Users\Logan\Documents\Visual Studio 2012\Projects\UsoundRadio\UsoundRadio\bin\Raven.Database.xml
+C:\Users\Logan\Documents\Visual Studio 2012\Projects\UsoundRadio\UsoundRadio\bin\Raven.Munin.pdb
+C:\Users\Logan\Documents\Visual Studio 2012\Projects\UsoundRadio\UsoundRadio\bin\Raven.Munin.xml
+C:\Users\Logan\Documents\Visual Studio 2012\Projects\UsoundRadio\UsoundRadio\bin\Raven.Smuggler.pdb
+C:\Users\Logan\Documents\Visual Studio 2012\Projects\UsoundRadio\UsoundRadio\bin\Raven.Storage.Esent.pdb
+C:\Users\Logan\Documents\Visual Studio 2012\Projects\UsoundRadio\UsoundRadio\bin\Raven.Storage.Managed.pdb
+C:\Users\Logan\Documents\Visual Studio 2012\Projects\UsoundRadio\UsoundRadio\bin\System.Reactive.xml
+C:\Users\Logan\Documents\Visual Studio 2012\Projects\UsoundRadio\UsoundRadio\bin\EntityFramework.xml
+C:\Users\Logan\Documents\Visual Studio 2012\Projects\UsoundRadio\UsoundRadio\bin\Newtonsoft.Json.xml
+C:\Users\Logan\Documents\Visual Studio 2012\Projects\UsoundRadio\UsoundRadio\bin\System.Net.Http.Formatting.xml
+C:\Users\Logan\Documents\Visual Studio 2012\Projects\UsoundRadio\UsoundRadio\bin\System.Web.Helpers.xml
+C:\Users\Logan\Documents\Visual Studio 2012\Projects\UsoundRadio\UsoundRadio\bin\System.Web.Http.xml
+C:\Users\Logan\Documents\Visual Studio 2012\Projects\UsoundRadio\UsoundRadio\bin\System.Web.Http.WebHost.xml
+C:\Users\Logan\Documents\Visual Studio 2012\Projects\UsoundRadio\UsoundRadio\bin\System.Web.Mvc.xml
+C:\Users\Logan\Documents\Visual Studio 2012\Projects\UsoundRadio\UsoundRadio\bin\System.Web.Razor.xml
+C:\Users\Logan\Documents\Visual Studio 2012\Projects\UsoundRadio\UsoundRadio\bin\System.Web.WebPages.xml
+C:\Users\Logan\Documents\Visual Studio 2012\Projects\UsoundRadio\UsoundRadio\bin\System.Web.WebPages.Deployment.xml
+C:\Users\Logan\Documents\Visual Studio 2012\Projects\UsoundRadio\UsoundRadio\bin\System.Web.WebPages.Razor.xml
+C:\Users\Logan\Documents\Visual Studio 2012\Projects\UsoundRadio\UsoundRadio\bin\WebMatrix.Data.xml
+C:\Users\Logan\Documents\Visual Studio 2012\Projects\UsoundRadio\UsoundRadio\bin\Microsoft.Web.WebPages.OAuth.xml
+C:\Users\Logan\Documents\Visual Studio 2012\Projects\UsoundRadio\UsoundRadio\bin\WebMatrix.WebData.xml
+C:\Users\Logan\Documents\Visual Studio 2012\Projects\UsoundRadio\UsoundRadio\bin\Org.Mentalis.Security.Cryptography.xml
+C:\Users\Logan\Documents\Visual Studio 2012\Projects\UsoundRadio\UsoundRadio\bin\NLog.xml
+C:\Users\Logan\Documents\Visual Studio 2012\Projects\UsoundRadio\UsoundRadio\bin\Lucene.Net.pdb
+C:\Users\Logan\Documents\Visual Studio 2012\Projects\UsoundRadio\UsoundRadio\bin\Lucene.Net.xml
+C:\Users\Logan\Documents\Visual Studio 2012\Projects\UsoundRadio\UsoundRadio\bin\Lucene.Net.Contrib.SpellChecker.pdb
+C:\Users\Logan\Documents\Visual Studio 2012\Projects\UsoundRadio\UsoundRadio\bin\Lucene.Net.Contrib.SpellChecker.xml
+C:\Users\Logan\Documents\Visual Studio 2012\Projects\UsoundRadio\UsoundRadio\bin\Spatial4n.Core.pdb
+C:\Users\Logan\Documents\Visual Studio 2012\Projects\UsoundRadio\UsoundRadio\bin\Lucene.Net.Contrib.Spatial.pdb
+C:\Users\Logan\Documents\Visual Studio 2012\Projects\UsoundRadio\UsoundRadio\bin\Lucene.Net.Contrib.Spatial.xml
+C:\Users\Logan\Documents\Visual Studio 2012\Projects\UsoundRadio\UsoundRadio\bin\BouncyCastle.Crypto.pdb
+C:\Users\Logan\Documents\Visual Studio 2012\Projects\UsoundRadio\UsoundRadio\bin\Esent.Interop.pdb
+C:\Users\Logan\Documents\Visual Studio 2012\Projects\UsoundRadio\UsoundRadio\bin\Esent.Interop.xml
+C:\Users\Logan\Documents\Visual Studio 2012\Projects\UsoundRadio\UsoundRadio\bin\Mono.Math.xml
+C:\Users\Logan\Documents\Visual Studio 2012\Projects\UsoundRadio\UsoundRadio\obj\Release\UsoundRadio.csprojResolveAssemblyReference.cache
+C:\Users\Logan\Documents\Visual Studio 2012\Projects\UsoundRadio\UsoundRadio\obj\Release\UsoundRadio.dll
+C:\Users\Logan\Documents\Visual Studio 2012\Projects\UsoundRadio\UsoundRadio\obj\Release\UsoundRadio.pdb
+C:\Users\Logan\Documents\Visual Studio 2012\Projects\UsoundRadio\UsoundRadio\bin\Raven.Abstractions.dll
+C:\Users\Logan\Documents\Visual Studio 2012\Projects\UsoundRadio\UsoundRadio\bin\Raven.Client.Lightweight.dll
+C:\Users\Logan\Documents\Visual Studio 2012\Projects\UsoundRadio\UsoundRadio\bin\Kendo.Mvc.dll
+C:\Users\Logan\Documents\Visual Studio 2012\Projects\UsoundRadio\UsoundRadio\bin\Kendo.Mvc.xml
+C:\Users\Logan\Documents\Visual Studio 2012\Projects\UsoundRadio\UsoundRadio\bin\bg-BG\Kendo.Mvc.resources.dll
+C:\Users\Logan\Documents\Visual Studio 2012\Projects\UsoundRadio\UsoundRadio\bin\da-DK\Kendo.Mvc.resources.dll
+C:\Users\Logan\Documents\Visual Studio 2012\Projects\UsoundRadio\UsoundRadio\bin\de-DE\Kendo.Mvc.resources.dll
+C:\Users\Logan\Documents\Visual Studio 2012\Projects\UsoundRadio\UsoundRadio\bin\es-ES\Kendo.Mvc.resources.dll
+C:\Users\Logan\Documents\Visual Studio 2012\Projects\UsoundRadio\UsoundRadio\bin\fr-FR\Kendo.Mvc.resources.dll
+C:\Users\Logan\Documents\Visual Studio 2012\Projects\UsoundRadio\UsoundRadio\bin\nl-NL\Kendo.Mvc.resources.dll
+C:\Users\Logan\Documents\Visual Studio 2012\Projects\UsoundRadio\UsoundRadio\bin\pl-PL\Kendo.Mvc.resources.dll
+C:\Users\Logan\Documents\Visual Studio 2012\Projects\UsoundRadio\UsoundRadio\bin\pt-BR\Kendo.Mvc.resources.dll
+C:\Users\Logan\Documents\Visual Studio 2012\Projects\UsoundRadio\UsoundRadio\bin\pt-PT\Kendo.Mvc.resources.dll
+C:\Users\Logan\Documents\Visual Studio 2012\Projects\UsoundRadio\UsoundRadio\bin\ru-RU\Kendo.Mvc.resources.dll
+C:\Users\Logan\Documents\Visual Studio 2012\Projects\UsoundRadio\UsoundRadio\bin\uk-UA\Kendo.Mvc.resources.dll
+C:\Users\Logan\Documents\Visual Studio 2012\Projects\UsoundRadio\UsoundRadio\bin\zh-CN\Kendo.Mvc.resources.dll

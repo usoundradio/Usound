@@ -10,7 +10,7 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
 [assembly: AssemblyProduct("UsoundRadio")]
-[assembly: AssemblyCopyright("Copyright UsoundRadio ©  2012")]
+[assembly: AssemblyCopyright("Copyright ©  2012")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
@@ -20,7 +20,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // The following GUID is for the ID of the typelib if this project is exposed to COM
-[assembly: Guid("7bfb369f-aca5-4199-83f8-bde96dc7b9b8")]
+[assembly: Guid("409dce18-1bb6-4bc2-9651-d381d88e40e7")]
 
 // Version information for an assembly consists of the following four values:
 //
