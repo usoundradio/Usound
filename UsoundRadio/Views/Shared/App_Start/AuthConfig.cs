@@ -19,8 +19,8 @@ namespace UsoundRadio
             //    clientId: "",
             //    clientSecret: "");
 
-            OAuthWebSecurity.RegisterTwitterClient(
-                consumerKey: "JvyS7DO2qd6NNTsXJ4E7zA",
+           OAuthWebSecurity.RegisterTwitterClient(
+               consumerKey: "JvyS7DO2qd6NNTsXJ4E7zA",
                 consumerSecret: "9z6157pUbOBqtbm0A0q4r29Y2EYzIHlUwbF4Cl9c");
 
             OAuthWebSecurity.RegisterFacebookClient(

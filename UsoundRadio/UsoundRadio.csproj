@@ -83,9 +83,8 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>bin\Ninject.dll</HintPath>
     </Reference>
-    <Reference Include="Ninject.Web.Common, Version=3.0.0.0, Culture=neutral, PublicKeyToken=c7192dc5380945e7, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>bin\Ninject.Web.Common.dll</HintPath>
+    <Reference Include="Ninject.Web.Common">
+      <HintPath>..\..\..\..\Usound Radio\Usound\UsoundRadio\bin\Ninject.Web.Common.dll</HintPath>
     </Reference>
     <Reference Include="NLog, Version=2.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -427,6 +426,21 @@
     <Content Include="Data\raven-data.ico" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
+    <Content Include="Data\Data" />
+    <Content Include="Data\desktop.ini" />
+    <Content Include="Data\IndexDefinitions\Auto%252fLikes%252fByDateAndLikeStatusSortByDate.index" />
+    <Content Include="Data\IndexDefinitions\Temp%252fLikes%252fByLikeStatusAndUserId.index" />
+    <Content Include="Data\IndexDefinitions\Temp%252fSongs%252fByCommunityRankSortByCommunityRank.index" />
+    <Content Include="Data\IndexDefinitions\Temp%252fSongs%252fByFileName.index" />
+    <Content Include="Data\IndexDefinitions\Temp%252fSongs%252fBy__document_idSortBy__document_id.index" />
+    <Content Include="Data\IndexDefinitions\Temp%252fUsers%252fByClientIdentifier.index" />
+    <Content Include="Data\IndexDefinitions\Temp%252fVisits%252fByDateTimeAndUserId.index" />
+    <Content Include="Data\Indexes\Auto%252fLikes%252fByDateAndLikeStatusSortByDate\segments.gen" />
+    <Content Include="Data\Indexes\Auto%252fLikes%252fByDateAndLikeStatusSortByDate\segments_1" />
+    <Content Include="Data\logs\RVN.log" />
+    <Content Include="Data\logs\RVNres00001.jrs" />
+    <Content Include="Data\logs\RVNres00002.jrs" />
+    <Content Include="Data\system\RVN.chk" />
     <Content Include="Content\images\form_bottom.gif" />
     <Content Include="Content\images\form_input.gif" />
     <Content Include="Content\images\form_top.gif" />

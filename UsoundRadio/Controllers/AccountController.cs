@@ -26,19 +26,30 @@ namespace UsoundRadio.Controllers
             ViewBag.ReturnUrl = returnUrl;
             return View();
         }
-
-        [AllowAnonymous]
-        public ActionResult LogOn()
+           [AllowAnonymous]
+        public ActionResult Test()
         {
-            return PartialView("_LogOn");
+            return View();
         }
+   
+           [AllowAnonymous]
+           public ActionResult Test1()
+           {
+               return View();
+           }
 
-        [AllowAnonymous]
-        public ActionResult UserAccount()
-        {
-            return PartialView("_Register");
-        }
-        
+           [AllowAnonymous]
+           public ActionResult LogOn()
+           {
+               return PartialView("_LogOn");
+           }
+           [AllowAnonymous]
+           public ActionResult UserAccount()
+           {
+               return PartialView("_Register");
+           }
+        // POST: /Account/Login
+
         [HttpPost]
         [AllowAnonymous]
         [ValidateAntiForgeryToken]

@@ -28,6 +28,9 @@
     </style>
                         <script>
                             $(document).ready(function () {
+                                $('#target').keyup(function () {
+                                    alert('Handler for .keyup() called.');
+                                });
                                 var crudServiceBaseUrl = "/Songs/",
                                     dataSource = new kendo.data.DataSource({
                                         transport: {
@@ -73,17 +76,26 @@
                                    
                                     sortable: true,
                                     selectable: true,
-
+                                 
+                                    editable: {
+                                        update: true, // puts the row in edit mode when it is clicked
+                                        destroy: false, // does not remove the row when it is deleted, but marks it for deletion
+                                        confirmation: "Are you sure you want to remove this item?"
+                                    },
                                     columns: [
                                         { field: "Name", title: "Song", width: "150" },
                                         { field: "Album", title: "Album", width: "150" },
                                         { field: "Artist", title: "Artist", width: "150" },
                                         { field: "Genre", title: "Genre", width: "150" },
                                         { field: "Country", title: "Country", width: "150" },
+                                    
+
                                         { command: ["edit"], title: "&nbsp;", width: "210px" }
                                     ],
 
                                     editable: "popup"
+
+
 
                                 });
                             });
@@ -95,3 +107,19 @@
         <div class="topshadow" style="margin: 0 auto; padding-bottom:3px; width:960px"></div>
 
 
+<style>
+    #add
+    {
+        width:32px;
+        height:32px;
+background-image: url(../../Images/RadioButtons/control_stop.png);
+    
+  }
+     #play
+    {
+        width:32px;
+        height:32px;
+        background-image: url(../../Images/RadioButtons/control_play.png);
+
+    }
+</style>
