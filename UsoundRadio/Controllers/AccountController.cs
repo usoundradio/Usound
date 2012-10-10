@@ -1,4 +1,4 @@
-﻿using System;
+﻿﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Transactions;
@@ -26,28 +26,8 @@ namespace UsoundRadio.Controllers
             ViewBag.ReturnUrl = returnUrl;
             return View();
         }
-           [AllowAnonymous]
-        public ActionResult Test()
-        {
-            return View();
-        }
-   
-           [AllowAnonymous]
-           public ActionResult Test1()
-           {
-               return View();
-           }
 
-           [AllowAnonymous]
-           public ActionResult LogOn()
-           {
-               return PartialView("_LogOn");
-           }
-           [AllowAnonymous]
-           public ActionResult UserAccount()
-           {
-               return PartialView("_Register");
-           }
+        //
         // POST: /Account/Login
 
         [HttpPost]
@@ -57,7 +37,7 @@ namespace UsoundRadio.Controllers
         {
             if (ModelState.IsValid && WebSecurity.Login(model.UserName, model.Password, persistCookie: model.RememberMe))
             {
-                return PartialView("_LogOn");
+                return RedirectToLocal(returnUrl);
             }
 
             // If we got this far, something failed, redisplay form

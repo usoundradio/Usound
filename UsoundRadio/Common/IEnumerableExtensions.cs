@@ -18,5 +18,18 @@ namespace UsoundRadio.Common
                 lastChunkSize = chunk.Length;
             }
         }
+
+        public static T RandomElement<T>(this IEnumerable<T> items)
+        {
+            var random = new Random();
+            var collection = items as ICollection<T>;
+            if (collection == null)
+            {
+                collection = new List<T>(items);
+            }
+
+            var randomElementIndex = random.Next(0, collection.Count);
+            return items.ElementAtOrDefault(randomElementIndex);
+        }
     }
 }

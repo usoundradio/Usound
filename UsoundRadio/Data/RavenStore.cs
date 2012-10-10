@@ -2,34 +2,19 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
-using UsoundRadio.Common;
-using UsoundRadio.Models;
 using Raven.Abstractions.Data;
 using Raven.Client;
 using Raven.Client.Document;
+using Raven.Client.Indexes;
 
 namespace UsoundRadio.Data
 {
     public class RavenStore
     {
-        public static IDocumentStore Instance
+        public IDocumentStore CreateDocumentStore()
         {
-            get
-            {
-                return Dependency.Get<IDocumentStore>();
-            }
-        }
-
-        public static IDocumentStore CreateDocumentStore()
-        {
-            var connectionStringName =
-#if DEBUG
- "InMemoryRavenDB";
-#else
- "RavenDB";
-#endif
             var parser = ConnectionStringParser<RavenConnectionStringOptions>
-                .FromConnectionStringName(connectionStringName);
+                .FromConnectionStringName("RavenDB");
             parser.Parse();
 
             // If we're configured to run in memory, we're debug; running locally.
@@ -52,23 +37,9 @@ namespace UsoundRadio.Data
                 };
             }
 
-            store.Conventions.IdentityPartsSeparator = "-";
             store.Initialize();
+            IndexCreation.CreateIndexes(typeof(RavenStore).Assembly, store);
             return store;
-        }
-
-        public static void Log(string message, IDocumentSession session = null)
-        {
-            var isNewSession = session == null;
-            var log = new Log { Message = message, TimeStamp = DateTime.Now };
-            using (var raven = session != null ? session : Instance.OpenSession())
-            {
-                raven.Store(log);
-                if (isNewSession)
-                {
-                    raven.SaveChanges();
-                }
-            }
         }
     }
 }

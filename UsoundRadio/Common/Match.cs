@@ -35,14 +35,27 @@ namespace UsoundRadio.Common
         {
             return new Match<T, TResult>(this.value).With(predicate, resultFetcher);
         }
+
+        /// <summary>
+        /// Gets a property off of the object if it's not null (or default value, for value types).
+        /// If it is null or default, the specified value is returned.
+        /// </summary>
+        /// <typeparam name="TResult">The type of the result.</typeparam>
+        /// <param name="propertyGetter">The function that fetches the property off the object.</param>
+        /// <param name="value">The default value. This will be returned if the matched value is null or default.</param>
+        /// <returns>The result.</returns>
+        public Match<T, TResult> IfNotNull<TResult>(Func<T, TResult> propertyGetter, TResult value)
+        {
+            return new Match<T, TResult>(this.value)
+                .With(v => !EqualityComparer<T>.Default.Equals(v, default(T)), propertyGetter)
+                .DefaultTo(value);
+        }
     }
 
     public class Match<T, TResult>
     {
         private readonly T value;
-        private readonly List<Tuple<T, TResult>> valueMatchers = new List<Tuple<T, TResult>>(2);
-        private readonly List<Tuple<Func<T, bool>, TResult>> predicateMatchers = new List<Tuple<Func<T, bool>, TResult>>(2);
-        private readonly List<Tuple<Func<T, bool>, Func<T, TResult>>> predicateFetchers = new List<Tuple<Func<T,bool>, Func<T,TResult>>>();
+        private readonly List<IMatchResult<T, TResult>> predicates = new List<IMatchResult<T, TResult>>();
         private TResult defaultValue;
 
         public Match(T value)
@@ -52,19 +65,19 @@ namespace UsoundRadio.Common
 
         public Match<T, TResult> With(T otherValue, TResult result)
         {
-            valueMatchers.Add(Tuple.Create(otherValue, result));
+            predicates.Add(new ValueMatch<T, TResult>(otherValue, result));
             return this;
         }
 
         public Match<T, TResult> With(Func<T, bool> predicate, TResult result)
         {
-            predicateMatchers.Add(Tuple.Create(predicate, result));
+            predicates.Add(new PredicateMatch<T, TResult>(predicate, result));
             return this;
         }
 
         public Match<T, TResult> With(Func<T, bool> predicate, Func<T, TResult> resultFetcher)
         {
-            predicateFetchers.Add(Tuple.Create(predicate, resultFetcher));
+            predicates.Add(new PredicateFetcherMatch<T, TResult>(predicate, resultFetcher));
             return this;
         }
 
@@ -74,33 +87,98 @@ namespace UsoundRadio.Common
             return this;
         }
 
+        public TResult Evaluate()
+        {
+            return this;
+        }
+
         public static implicit operator TResult(Match<T, TResult> match)
         {
             if (match == null)
             {
                 return default(TResult);
             }
-            
-            var equality = EqualityComparer<T>.Default;
-            var matchingValue = match.valueMatchers.FirstOrDefault(v => equality.Equals(v.Item1, match.value));
-            if (matchingValue != null)
-            {
-                return matchingValue.Item2;
-            }
 
-            var matchingPredicate = match.predicateMatchers.FirstOrDefault(p => p.Item1(match.value));
+            var equality = EqualityComparer<T>.Default;
+            var matchingPredicate = match.predicates.FirstOrDefault(p => p.Matches(match.value));
             if (matchingPredicate != null)
             {
-                return matchingPredicate.Item2;
-            }
-
-            var matchingPredicateFetcher = match.predicateFetchers.FirstOrDefault(p => p.Item1(match.value));
-            if (matchingPredicateFetcher != null)
-            {
-                return matchingPredicateFetcher.Item2.Invoke(match.value);
+                return matchingPredicate.Result(match.value);
             }
 
             return match.defaultValue;
+        }
+    }
+
+    public interface IMatchResult<T, TResult>
+    {
+        bool Matches(T input);
+        TResult Result(T input);
+    }
+
+    public class ValueMatch<T, TResult> : IMatchResult<T, TResult>
+    {
+        private readonly T value;
+        private readonly TResult result;
+
+        public ValueMatch(T value, TResult result)
+        {
+            this.value = value;
+            this.result = result;
+        }
+
+        public bool Matches(T input)
+        {
+            return EqualityComparer<T>.Default.Equals(this.value, input);
+        }
+
+        public TResult Result(T input)
+        {
+            return result;
+        }
+    }
+
+    public class PredicateMatch<T, TResult> : IMatchResult<T, TResult>
+    {
+        private readonly Func<T, bool> predicate;
+        private readonly TResult result;
+
+        public PredicateMatch(Func<T, bool> predicate, TResult result)
+        {
+            this.predicate = predicate;
+            this.result = result;
+        }
+
+        public bool Matches(T input)
+        {
+            return predicate(input);
+        }
+
+        public TResult Result(T input)
+        {
+            return result;
+        }
+    }
+
+    public class PredicateFetcherMatch<T, TResult> : IMatchResult<T, TResult>
+    {
+        private readonly Func<T, bool> predicate;
+        private readonly Func<T, TResult> resultFetcher;
+
+        public PredicateFetcherMatch(Func<T, bool> predicate, Func<T, TResult> fetcher)
+        {
+            this.predicate = predicate;
+            this.resultFetcher = fetcher;
+        }
+
+        public bool Matches(T input)
+        {
+            return predicate(input);
+        }
+
+        public TResult Result(T input)
+        {
+            return resultFetcher(input);
         }
     }
 }

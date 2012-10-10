@@ -7,8 +7,8 @@ namespace UsoundRadio.Models
 {
     public class Visit
     {
-        public int Id { get; set; }
-        public int UserId { get; set; }
+        public string Id { get; set; }
+        public string UserId { get; set; }
         public DateTime DateTime { get; set; }
         public int TotalPlays { get; set; }
     }

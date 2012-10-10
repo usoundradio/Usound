@@ -1,12 +1,15 @@
-﻿
-    
-using System;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
+using System.Web;
+using System.Runtime.Serialization;
 using System.Text.RegularExpressions;
 using System.Diagnostics.Contracts;
-using UsoundRadio.Models;
+using UsoundRadio.Common;
+using System.Web.Hosting;
+using System.IO;
 
-namespace PrairieAsunder.Models
+namespace UsoundRadio.Models
 {
     public class Song
     {
@@ -58,31 +61,20 @@ namespace PrairieAsunder.Models
         }
 
         public string Name { get; set; }
-
-        public string Country { get; set; }
-
-        public string Genre { get; set; }
         public int Number { get; set; }
-
         public string Album { get; set; }
-
         public string Artist { get; set; }
-        public string Description { get; set; }
-        public Uri AlbumArtUri { get; set; }
-
-        public Uri PurchaseUri { get; set; }
-
-        public Uri Uri { get; set; }
-
         public SongLike SongLike { get; set; }
-
         public int CommunityRank { get; set; }
-
-        public string DebugInfo { get; set; }
-
+        public CommunityRankStanding CommunityRankStanding { get; set; }
+        public string Genre { get; set; }
+        public string Country { get; set; }
+        public string Description { get; set; }
         public string FileName { get; set; }
-
-        public int Id { get; set; }
+        public string Id { get; set; }
+        public Uri PurchaseUri { get; set; }
+        public Uri AlbumArtUri { get; set; }
+        public Uri Uri { get; set; }
 
         /// <summary>
         /// Creates a new song object that's ready to be sent as a data transfer object over to the client.
@@ -99,11 +91,12 @@ namespace PrairieAsunder.Models
                 Id = this.Id,
                 SongLike = likeStatus,
                 Name = this.Name,
-                 Description = this.Description,
                 Number = this.Number,
                 Genre = this.Genre,
+                Description = this.Description,
                 Country = this.Country,
 
+                PurchaseUri = this.PurchaseUri,
                 AlbumArtUri = GetAlbumArtUri(),
                 Uri = GetSongUri()
             };
@@ -112,7 +105,6 @@ namespace PrairieAsunder.Models
         /// <summary>
         /// Creates a new song object that's ready to be sent as a data transfer object over to the client.
         /// </summary>
-        /// <param name="likeStatus">The like status for the song.</param>
         /// <returns></returns>
         public Song ToDto()
         {
@@ -129,25 +121,6 @@ namespace PrairieAsunder.Models
         {
             var relativeUri = "/Songs/GetSongFile?songId=" + this.Id.ToString();
             return new Uri(relativeUri, UriKind.Relative);
-        }
-
-        public static Song GetErrorSong(string error)
-        {
-            return new Song
-            {
-                Album = "Arise O Lord",
-                Artist = "Israel's Hope",
-                CommunityRank = 0,
-                DebugInfo = error,
-                Id = 0,
-                Name = "Let Us Adore",
-                Number = 6,
-                  Genre = "Jewish",
-                Country = "UnitedStates",
-                PurchaseUri = new Uri("http://lmgtfy.com/?q=%22" + Uri.EscapeDataString("Israel's Hope") + "%22+messianic+music+purchase"),
-                SongLike = SongLike.None,
-                Uri = new Uri("http://judahhimango.com/music/messianic/Israel's Hope - Arise O Lord - 06 - Let Us Adore.mp3")
-            };
         }
     }
 }

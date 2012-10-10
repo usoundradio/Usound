@@ -26,6 +26,10 @@
             });
         });
 
+        PubSub.subscribe("zzz", function (message, args) {
+            console.log("got zzz!");
+        });
+
         // When the the PlaySongById message is sent, we do an AJAX call to fetch
         // the song, then publish the SongFetched message when done.
         PubSub.subscribe("PlaySongById", function (message, args) {

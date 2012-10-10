@@ -61,6 +61,7 @@
                 <img src="~/Images/RadioButtons/thumb_up.png" />
             </div>
             <span id="audiostatus" data-bind="text: player.mediaState"></span>
+            <div><a href="#" data-bind="click: uploadMusic">Upload your music</a></div>
         </div>
     </header>
 
@@ -68,7 +69,7 @@
         <div id="body" class="background">
             <div class="topshadow" style="margin: 0 auto; width: 960px; height: 5px"></div>
             @RenderBody()
-        </div
+        </div>
     </section>
 
     <footer style="margin-top: 60px">

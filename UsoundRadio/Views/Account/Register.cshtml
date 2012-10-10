@@ -5,7 +5,7 @@
 
 <hgroup class="title">
     <h1>@ViewBag.Title.</h1>
-
+    <h2>Create a new account.</h2>
 </hgroup>
 
 @using (Html.BeginForm()) {
@@ -31,11 +31,11 @@
         <input type="submit" value="Register" />
     </fieldset>
 }
+
 <section class="social" id="socialLoginForm">
     <h2>Use another service to log in.</h2>
     @Html.Action("ExternalLoginsList", new { ReturnUrl = ViewBag.ReturnUrl })
 </section>
-
 
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")

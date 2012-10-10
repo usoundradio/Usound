@@ -57,7 +57,7 @@
 	                new chavah.songPlaceHolder("RandomLikedSongResults", 19),
 	                new chavah.songPlaceHolder("RandomLikedSongResults", 20),
     new chavah.songPlaceHolder("RandomLikedSongResults", 21),
-       new chavah.songPlaceHolder("RandomLikedSongResults", 22),
+        new chavah.songPlaceHolder("RandomLikedSongResults", 22),
 
                    new chavah.songPlaceHolder("RandomLikedSongResults", 23),
                    new chavah.songPlaceHolder("RandomLikedSongResults", 24),
@@ -73,38 +73,35 @@
         new chavah.songPlaceHolder("TopSongResults", 0),
         new chavah.songPlaceHolder("TopSongResults", 1),
         new chavah.songPlaceHolder("TopSongResults", 2),
-              new chavah.songPlaceHolder("TopSongResults", 3),
-                    new chavah.songPlaceHolder("TopSongResults", 4),
-                    new chavah.songPlaceHolder("TopSongResults", 5),
-                    new chavah.songPlaceHolder("TopSongResults", 6),
-                    new chavah.songPlaceHolder("TopSongResults", 7),
-                    new chavah.songPlaceHolder("TopSongResults", 8),
-	                new chavah.songPlaceHolder("TopSongResults", 9),
-	                new chavah.songPlaceHolder("TopSongResults", 10),
-                            new chavah.songPlaceHolder("TopSongResults", 11),
+        new chavah.songPlaceHolder("TopSongResults", 3),
+        new chavah.songPlaceHolder("TopSongResults", 4),
+        new chavah.songPlaceHolder("TopSongResults", 5),
+        new chavah.songPlaceHolder("TopSongResults", 6),
+        new chavah.songPlaceHolder("TopSongResults", 7),
+        new chavah.songPlaceHolder("TopSongResults", 8),
+	    new chavah.songPlaceHolder("TopSongResults", 9),
+	    new chavah.songPlaceHolder("TopSongResults", 10),
+        new chavah.songPlaceHolder("TopSongResults", 11),
         new chavah.songPlaceHolder("TopSongResults", 12),
-              new chavah.songPlaceHolder("TopSongResults", 13),
-                    new chavah.songPlaceHolder("TopSongResults", 14),
-                    new chavah.songPlaceHolder("TopSongResults", 15),
-                    new chavah.songPlaceHolder("TopSongResults", 16),
-                    new chavah.songPlaceHolder("TopSongResults", 17),
-                    new chavah.songPlaceHolder("TopSongResults", 18),
-	                new chavah.songPlaceHolder("TopSongResults", 19),
-	                new chavah.songPlaceHolder("TopSongResults", 20),
-    new chavah.songPlaceHolder("TopSongResults", 21),
-new chavah.songPlaceHolder("TopSongResults", 22),
-new chavah.songPlaceHolder("TopSongResults", 23),
-new chavah.songPlaceHolder("TopSongResults", 24),
-new chavah.songPlaceHolder("TopSongResults", 25),
-new chavah.songPlaceHolder("TopSongResults", 26),
-new chavah.songPlaceHolder("TopSongResults", 27),
-new chavah.songPlaceHolder("TopSongResults", 28),
-new chavah.songPlaceHolder("TopSongResults", 29),
-new chavah.songPlaceHolder("TopSongResults", 30)
+        new chavah.songPlaceHolder("TopSongResults", 13),
+        new chavah.songPlaceHolder("TopSongResults", 14),
+        new chavah.songPlaceHolder("TopSongResults", 15),
+        new chavah.songPlaceHolder("TopSongResults", 16),
+        new chavah.songPlaceHolder("TopSongResults", 17),
+        new chavah.songPlaceHolder("TopSongResults", 18),
+	    new chavah.songPlaceHolder("TopSongResults", 19),
+	    new chavah.songPlaceHolder("TopSongResults", 20),
+        new chavah.songPlaceHolder("TopSongResults", 21),
+        new chavah.songPlaceHolder("TopSongResults", 22),
+        new chavah.songPlaceHolder("TopSongResults", 23),
+        new chavah.songPlaceHolder("TopSongResults", 24),
+        new chavah.songPlaceHolder("TopSongResults", 25),
+        new chavah.songPlaceHolder("TopSongResults", 26),
+        new chavah.songPlaceHolder("TopSongResults", 27),
+        new chavah.songPlaceHolder("TopSongResults", 28),
+        new chavah.songPlaceHolder("TopSongResults", 29),
+        new chavah.songPlaceHolder("TopSongResults", 30)
     ]);
-
-
-
 
     this.recentSongs = ko.observableArray([
         new chavah.songPlaceHolder(),
@@ -241,20 +238,21 @@ new chavah.songPlaceHolder("TopSongResults", 30)
 
     this.uploadMusic = function () {
         filepicker.getFile(['audio/mpeg'], {
-            'multiple': true, 'container': 'window',
+            'multiple': true,
+            'container': 'window',
             'services': [
                 filepicker.SERVICES.COMPUTER,
                 filepicker.SERVICES.URL,
                 filepicker.SERVICES.DROPBOX,
                 filepicker.SERVICES.GOOGLE_DRIVE,
-                filepicker.SERVICES.GMAIL]
+                filepicker.SERVICES.GMAIL
+            ]
         }, function (uploadedFiles) {
-            console.log(uploadedFiles);
             // This function is invoked when the files finish uploading.
             // We're passed uploadedFiles, which is an array of objects that look like this:
             // { url: "http://filepickerserver/asdfqw35134", data: { size: 12342134, type: "audio/mpeg", filename: "foo.mp3" } }
             uploadedFiles.forEach(function (file) {
-                var postArgs = { url: "/UploadSong", data: { address: file.url, fileName: file.data.filename } };
+                var postArgs = { url: "/UploadSong", responseMessage: "SongUploadCompleted", data: { address: file.url, fileName: file.data.filename } };
                 PubSub.publish("Post", postArgs);
             });
         });

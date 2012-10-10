@@ -25,6 +25,11 @@ namespace UsoundRadio.Common
             }
         }
 
+        public static double Range(this Random random, double max)
+        {
+            return random.NextDouble() * max;
+        }
+
         public static bool Contains(this string text, string element)
         {
             return Contains(text, element, StringComparison.OrdinalIgnoreCase);

@@ -10,10 +10,7 @@ namespace UsoundRadio.App_Start
     using Ninject.Web.Common;
     using UsoundRadio.Common;
     using UsoundRadio.Data;
-    using UsoundRadio.Utils;
     using Raven.Client;
-    using Griffin.MvcContrib.Providers.Membership;
-    using Griffin.MvcContrib.RavenDb.Providers;
 
     public static class NinjectWebCommon 
     {
@@ -57,25 +54,12 @@ namespace UsoundRadio.App_Start
         /// <param name="kernel">The kernel.</param>
         private static void RegisterServices(IKernel kernel)
         {
-            Dependency.Kernel = kernel;
-            kernel
-                .Bind<LikesCache>()
-                .ToConstant(new LikesCache())
-                .InSingletonScope();
+            Get.Kernel = kernel;
 
             kernel
                 .Bind<IDocumentStore>()
-                .ToConstant(RavenStore.CreateDocumentStore())
+                .ToConstant(new RavenStore().CreateDocumentStore())
                 .InSingletonScope();
-
-            kernel
-                .Bind<IAccountRepository>()
-                .ToMethod(context =>
-                    {
-                        var session = RavenStore.Instance.OpenSession();
-                        return new RavenDbAccountRepository(session);
-                    })
-                .InRequestScope();
         }        
     }
 }

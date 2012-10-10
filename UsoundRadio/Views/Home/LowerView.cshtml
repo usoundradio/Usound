@@ -123,3 +123,90 @@ background-image: url(../../Images/RadioButtons/control_stop.png);
 
     }
 </style>
+
+﻿<br />
+
+<div style="margin: 0 auto; width:960px">
+<div class="topshadow" id="topshadow" style="margin: 0 auto; padding-top:3px;width:960px"></div>
+    <div style="min-width:220px; float:left">
+        <div class="nonactivebox" style="border-top:none;"><img src="http://frontierdesign.com/PianoStudio/images/playlistIcon.png" style="float:left; padding-top:5px; padding-left:10px"/><div class="navtext">Library</div></div>
+      
+        <div class="nonactivebox"><img src="http://frontierdesign.com/PianoStudio/images/playlistIcon.png" style="float:left; padding-top:5px; padding-left:10px"/><div class="navtext">Stations</div></div>
+        <div class="nonactivebox"><img src="http://frontierdesign.com/PianoStudio/images/playlistIcon.png" style="float:left; padding-top:5px; padding-left:10px"/><div class="navtext">Playlists</div></div>
+        <div class="nonactivebox"><img src="http://frontierdesign.com/PianoStudio/images/playlistIcon.png" style="float:left; padding-top:5px; padding-left:10px"/><div class="navtext">Settings</div></div> 
+        <div class="nonactivebox"><img src="http://frontierdesign.com/PianoStudio/images/playlistIcon.png" style="float:left; padding-top:5px; padding-left:10px"/><div class="navtext">Profile</div></div>
+        <div class="nonactivebox" style="border-bottom:none"><img src="http://frontierdesign.com/PianoStudio/images/playlistIcon.png" style="float:left; padding-top:5px; padding-left:10px"/><div class="navtext">Tools</div></div>
+          <div style="border:none;height:107px; background-color:red; width:220px"><div class="navtext">
+              Usound alert box... Text goes inside here to alert users of anything....
+                                                                      </div></div>
+
+    </div>
+    <div style="float:left">
+         <div id="grid"></div>
+
+    </div>
+
+    <script>
+        $(document).ready(function () {
+            var crudServiceBaseUrl = "/Songs/",
+                dataSource = new kendo.data.DataSource({
+                    transport: {
+                        read: {
+                            url: crudServiceBaseUrl + "GetSongs",
+                            dataType: "json"
+                        },
+
+                        update: {
+                            url: crudServiceBaseUrl + "UpdateSongs",
+                            contentType: "application/json",
+                            type: "POST"
+                        },
+
+                        parameterMap: function (options, operation) {
+                            if (operation !== "read" && options.models) {
+                                return kendo.stringify(options.models);
+                            }
+                        }
+                    },
+                    batch: true,
+                    pageSize: 30,
+                    schema: {
+                        model: {
+                            id: "Id",
+                            fields: {
+                                Id: { editable: false, nullable: true },
+                                Name: { type: "string", validation: { required: true } },
+                                Genre: { type: "string" },
+                                Album: { type: "string" },
+                                Artist: { type: "string" },
+                                Country: { type: "string" }
+                            }
+                        }
+                    }
+
+                });
+
+            $("#grid").kendoGrid({
+                dataSource: dataSource,
+                pageable: true,
+                height: "350",
+                                   
+                sortable: true,
+                selectable: true,
+
+                columns: [
+                    { field: "Name", title: "Song", width: "150" },
+                    { field: "Album", title: "Album", width: "150" },
+                    { field: "Artist", title: "Artist", width: "150" },
+                    { field: "Genre", title: "Genre", width: "150" },
+                    { field: "Country", title: "Country", width: "150" },
+                    { command: ["edit"], title: "&nbsp;", width: "210px" }
+                ],
+
+                editable: "popup"
+            });
+        });
+    </script>
+</div>
+
+<div class="topshadow" style="margin: 0 auto; padding-bottom:3px; width:960px"></div>

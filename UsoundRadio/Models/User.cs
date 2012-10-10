@@ -7,8 +7,14 @@ namespace UsoundRadio.Models
 {
     public class User
     {
-        public int Id { get; set; }
+        public User()
+        {
+            this.Preferences = new UserSongPreferences();
+        }
+
+        public string Id { get; set; }
         public Guid ClientIdentifier { get; set; }
         public int TotalPlays { get; set; }
+        public UserSongPreferences Preferences { get; set; }
     }
 }

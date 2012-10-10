@@ -1,42 +1,65 @@
-﻿@if (Request.IsAuthenticated) {
+﻿@if (Request.IsAuthenticated)
+ {
     <text>
-        Hello, @Html.ActionLink(User.Identity.Name, "Manage", "Account", routeValues: null, htmlAttributes: new { @class = "username", title = "Manage" })!
-        @using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm" })) {
-            @Html.AntiForgeryToken()
-            <a href="javascript:document.getElementById('logoutForm').submit()">Log off</a>
-        }
+    Hello, @Html.ActionLink(User.Identity.Name, "Manage", "Account", routeValues: null, htmlAttributes: new { @class = "username", title = "Manage" })!
+    @using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm" }))
+    {
+        @Html.AntiForgeryToken()
+        <a href="javascript:document.getElementById('logoutForm').submit()">Log off</a>
+    }
     </text>
-} else {
+ }
+ else
+ {
     <ul>
 
-        <li> <a  href="/Account/Login"><span>Sign in</span></a> </li>
-               <li> <a  href="/Account/Register"><span>Register</span></a> </li>
+        <li><a href="/Account/Login"><span>Sign in</span></a> </li>
+        <li><a href="/Account/Register"><span>Register</span></a> </li>
     </ul>
-}
+ }
 
 
-          
-        
-   
+
+
+
 
 <script>
     $(document).ready(function () {
-    
+
         $("button:contains('Facebook')").css("background-image", "url(../../Images/facebook.png)").text("");
-       
+
         $("button:contains('Twitter')").css("background-image", "url(../../Images/twitter.png)").text("");
 
         $("button:contains('Google')").css("background-image", "url(../../Images/google.png)").text("");
     });
 </script>
-            <style>
+<style>
+    #socialLoginForm button
+    {
+        width: 170px;
+        height: 37px;
+    }
+</style>
 
+﻿@if (Request.IsAuthenticated)
+ {
+ <text>
+    Hello, @Html.ActionLink(User.Identity.Name, "Manage", "Account", routeValues: null, htmlAttributes: new { @class = "username", title = "Manage" })!
+    @using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm" }))
+    {
+ @Html.AntiForgeryToken()
 
+        <a href="javascript:document.getElementById('logoutForm').submit()">Log off</a>
+    }
+    </text>
+ }
+ else
+ {
 
-                #socialLoginForm button
-                {
-                    width:170px;
-                    height:37px;
-                }
-              
-            </style>
+    <ul>
+        <li>@Html.ActionLink("Register", "Register", "Account", routeValues: null, htmlAttributes: new { id = "registerLink" })
+        </li>
+        <li>@Html.ActionLink("Log in", "Login", "Account", routeValues: null, htmlAttributes: new { id = "loginLink" })
+        </li>
+    </ul>
+ }

@@ -228,6 +228,15 @@
     <Compile Include="App_Start\NinjectWebCommon.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Common\Range.cs" />
+    <Compile Include="Controllers\RavenController.cs" />
+    <Compile Include="Data\Songs_CommunityRankIndex.cs" />
+    <Compile Include="Data\Songs_RankStandings.cs" />
+    <Compile Include="Models\CommunityRankStanding.cs" />
+    <Compile Include="Models\LikeDislikeCount.cs" />
+    <Compile Include="Models\SongPick.cs" />
+    <Compile Include="Models\SongRequest.cs" />
+    <Compile Include="Models\UserSongPreferences.cs" />
     <Compile Include="Common\Constants.cs" />
     <Compile Include="Common\Dependency.cs" />
     <Compile Include="Common\Extensions.cs" />
@@ -249,8 +258,6 @@
     <Compile Include="Models\User.cs" />
     <Compile Include="Models\Visit.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Utils\LikesCache.cs" />
-    <Compile Include="Utils\SongRequestManager.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="App_ReadMe\Griffin.MvcContrib.RavenDb.txt" />
@@ -504,15 +511,6 @@
     <Content Include="Images\orderedList8.png" />
     <Content Include="Images\orderedList9.png" />
     <Content Include="Views\_ViewStart.cshtml" />
-    <Content Include="Views\Account\_ChangePasswordPartial.cshtml" />
-    <Content Include="Views\Account\_ExternalLoginsListPartial.cshtml" />
-    <Content Include="Views\Account\_RemoveExternalLoginsPartial.cshtml" />
-    <Content Include="Views\Account\_SetPasswordPartial.cshtml" />
-    <Content Include="Views\Account\Login.cshtml" />
-    <Content Include="Views\Account\Manage.cshtml" />
-    <Content Include="Views\Account\Register.cshtml" />
-    <Content Include="Views\Account\ExternalLoginFailure.cshtml" />
-    <Content Include="Views\Account\ExternalLoginConfirmation.cshtml" />
     <Content Include="Views\Home\About.cshtml" />
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
@@ -525,10 +523,18 @@
     <Content Include="Views\Home\Welcome.cshtml" />
     <Content Include="Views\Shared\_WelcomeLayout.cshtml" />
     <Content Include="Views\Home\LowerView.cshtml" />
-    <Content Include="Views\Account\Test1.cshtml" />
     <Content Include="Views\Shared\_LogOn.cshtml" />
     <Content Include="Views\Shared\_Register.cshtml" />
     <Content Include="Views\Shared\_Footer.cshtml" />
+    <Content Include="Views\Account\ExternalLoginConfirmation.cshtml" />
+    <Content Include="Views\Account\ExternalLoginFailure.cshtml" />
+    <Content Include="Views\Account\Login.cshtml" />
+    <Content Include="Views\Account\Manage.cshtml" />
+    <Content Include="Views\Account\Register.cshtml" />
+    <Content Include="Views\Account\_ChangePasswordPartial.cshtml" />
+    <Content Include="Views\Account\_ExternalLoginsListPartial.cshtml" />
+    <Content Include="Views\Account\_RemoveExternalLoginsPartial.cshtml" />
+    <Content Include="Views\Account\_SetPasswordPartial.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
