@@ -15,15 +15,15 @@ namespace UsoundRadio.Controllers
         {
             var log = new Log { Message = message, TimeStamp = DateTime.Now };
             var expiration = DateTime.UtcNow.AddDays(30);
-            this.RavenSession.Store(log);
-            this.RavenSession.Advanced.GetMetadataFor(log)["Raven-Expiration-Date"] = new Raven.Json.Linq.RavenJValue(expiration);
+            this.RavenDb.Store(log);
+            this.RavenDb.Advanced.GetMetadataFor(log)["Raven-Expiration-Date"] = new Raven.Json.Linq.RavenJValue(expiration);
         }
 
-        public IDocumentSession RavenSession { get; private set; }
+        public IDocumentSession RavenDb { get; private set; }
 
         protected override void OnActionExecuting(ActionExecutingContext filterContext)
         {
-            this.RavenSession = Get.A<IDocumentStore>().OpenSession();
+            this.RavenDb = Get.A<IDocumentStore>().OpenSession();
             
             base.OnActionExecuting(filterContext);
         }
@@ -32,7 +32,7 @@ namespace UsoundRadio.Controllers
         {
             if (filterContext.Exception == null && !filterContext.IsChildAction)
             {
-                this.RavenSession.SaveChanges();
+                this.RavenDb.SaveChanges();
             }
 
             base.OnActionExecuted(filterContext);

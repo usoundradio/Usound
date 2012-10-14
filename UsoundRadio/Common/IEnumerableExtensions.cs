@@ -9,13 +9,14 @@ namespace UsoundRadio.Common
     {
         public static IEnumerable<IEnumerable<T>> Chunk<T>(this IEnumerable<T> sequence, int chunkSize)
         {
-            var lastChunkSize = -1;
             var skip = 0;
-            while (lastChunkSize != 0)
+            var chunk = sequence.Skip(skip).Take(chunkSize);
+            var enumerator = chunk.GetEnumerator();
+            while (enumerator.MoveNext())
             {
-                var chunk = sequence.Skip(skip).Take(chunkSize).ToArray();
                 yield return chunk;
-                lastChunkSize = chunk.Length;
+                skip += chunkSize;
+                enumerator = sequence.Skip(skip).Take(chunkSize).GetEnumerator();
             }
         }
 

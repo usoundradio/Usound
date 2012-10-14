@@ -8,7 +8,7 @@
     }
 
     this.requestSong = function (song) {
-        PubSub.publish("JsonGet", { url: "/GetSongForSongRequest", data: { clientId: chavah.localstorage.getOrCreateUserId(), songId: song.id } });
+        PubSub.publish("Get", { url: "/GetSongForSongRequest", data: { clientId: chavah.localstorage.getOrCreateUserId(), songId: song.id } });
         PubSub.publish("Pause");
         this.pendingRequestedSongId = song.id;
         this.hasPlayedRequestAnnouncement = false;

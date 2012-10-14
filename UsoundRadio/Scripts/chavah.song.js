@@ -45,7 +45,7 @@
 
     this.playSongFromArtist = function () {
         PubSub.publish("Pause");
-        PubSub.publish("JsonGet", {
+        PubSub.publish("Get", {
             url: "/GetSongByArtist",
             data: { clientId: chavah.localstorage.getOrCreateUserId(), artist: song.artist },
             responseMessage: "SongFetched"
@@ -54,20 +54,19 @@
 
     this.playSongFromAlbum = function () {
         PubSub.publish("Pause");
-        PubSub.publish("JsonGet", {
+        PubSub.publish("Get", {
             url: "/GetSongByAlbum",
             data: { clientId: chavah.localstorage.getOrCreateUserId(), album: song.album },
             responseMessage: "SongFetched"
         });
     }
 
-    this.songGrid = function () {
-        PubSub.publish("JsonGet", {
-            url: "/GetSongMatches?searchText=",
-            data: { album: song.album }
-
-      });
-    }
+    //this.songGrid = function () {
+    //    PubSub.publish("Get", {
+    //        url: "/GetSongMatches?searchText=",
+    //        data: { album: song.album }
+    //  });
+    //}
 
     this.dislike = function () {
         if (!song.isDisliked()) {

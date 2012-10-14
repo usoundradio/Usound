@@ -5,109 +5,119 @@
 
 
 <div id="mainview" class="songs">
-          <table style="width: 960px;" border="0" align="center">
-<tbody>
-   <tr valign="top">
- 
+    <table style="width: 960px;" border="0" align="center">
+        <tbody>
+            <tr valign="top">
 
-<td>
- 
-<div class="toplinks"><span  class="songlinks" id="biolink">Bio</span> | <span class="songlinks" id="likedlink" > Liked</span> | <span class="songlinks" id="recentlink">Recent</span> | <span class="songlinks" id="toplink">Top</span></div>
 
-</td>
-</tr>
-<tr valign="top">
- 
-<td style="width:200px">  @*The big current song tile*@
-                <div class="current-song" data-bind="with: currentSong">
-                    <img class="album-art" data-bind="attr: { src: albumArtUri, title: artist + ' - ' + album + ' - ' + name }, click: playSongFromAlbum" />
-                    <div class="info">
-                        <div class="rating">
-                            <img style="display: block; margin-left: 8px;" data-bind="attr: { src: thumbUpImage, title: likeHoverText }, click: like, touchstart: like" />
-                            <span data-bind="text: communityRank, style: { color: chavah.converters.rankToColor($data.communityRank()) }"></span>
-                            <img style="display: block; margin-left: 8px; margin-top: -7px;" data-bind="attr: { src: thumbDownImage, title: dislikeHoverText }, click: dislike, touchstart: dislike" />
+                <td>
+
+                    <div class="toplinks"><span class="songlinks" id="biolink">Bio</span> | <span class="songlinks"
+                        id="likedlink">Liked</span> | <span class="songlinks" id="recentlink">Recent</span>
+                        | <span class="songlinks" id="toplink">Top</span></div>
+
+                </td>
+            </tr>
+            <tr valign="top">
+
+                <td style="width: 200px">@*The big current song tile*@
+                    <div class="current-song" data-bind="with: currentSong">
+                        <img class="album-art" data-bind="attr: { src: albumArtUri, title: artist + ' - ' + album + ' - ' + name }, click: playSongFromAlbum" />
+                        <div class="info">
+                            <div class="rating">
+                                <img style="display: block; margin-left: 8px;" data-bind="attr: { src: thumbUpImage, title: likeHoverText }, click: like, touchstart: like" />
+                                <span data-bind="text: communityRank, style: { color: chavah.converters.rankToColor($data.communityRank()) }">
+                                </span>
+                                <img style="display: block; margin-left: 8px; margin-top: -7px;" data-bind="attr: { src: thumbDownImage, title: dislikeHoverText }, click: dislike, touchstart: dislike" />
+                            </div>
+                            <span class="name" data-bind="text: name, attr: { title: name }"></span>
+                            <div class="artist">
+                                <span>By</span>
+                                <a class="artist" href="#" data-bind="text: artist, click: playSongFromArtist, attr: { title: artist + ' - click to play another song from this artist' }">
+                                </a>
+                            </div>
+                            <div class="artist">
+                                <span class="artist">On</span>
+                                <a class="album" href="#" data-bind="text: album, click: playSongFromAlbum, attr: { title: album + ' - click to play another song from this album' }">
+                                </a>
+                            </div>
+
                         </div>
-                        <span class="name" data-bind="text: name, attr: { title: name }"></span>
-                        <div class="artist">
-                            <span>By</span>
-                            <a class="artist" href="#" data-bind="text: artist, click: playSongFromArtist, attr: { title: artist + ' - click to play another song from this artist' }"></a>
+                    </div>
+                    <table style="margin-top: -20px; width: 50px">
+                        <tr>
+                            <td>
+                                <a data-bind="attr: { href: facebookShareLink }" target="blank" title="Share this song on Facebook">
+                                    <img src="/Content/images/Facebook.png" alt="Share song Facebook">
+                                </a>
+                            </td>
+                            <td><a target="blank" title="Share this song on Twitter" data-bind="attr: { href: twitterShareLink }">
+                                <img src="/Content/images/Twitter.png" alt="Share song on Twitter">
+                            </a>
+                            </td>
+                        </tr>
+                    </table>
+                </td>
+                <td>
+                    <div class="radiodetails">
+                        
+                        <div id="biocontent" style="display: none">
+                            Bio Content Goes Here <a href="#" data-bind="click: uploadMusic">Upload your music</a>
                         </div>
-                        <div class="artist">
-                            <span class="artist">On</span>
-                            <a class="album" href="#" data-bind="text: album, click: playSongFromAlbum, attr: { title: album + ' - click to play another song from this album' }"></a>
+                        <div id="topcontent">
+
+                            <div data-bind="template: { foreach: topSongs, name: 'song-tile-template', afterAdd: fadeIn }, visible: topSongs().length > 0">
+                            </div>
+
                         </div>
+                        <div id="likedcontent" style="display: none">
 
+                            <div data-bind="template: { foreach: myLikedSongs, name: 'song-tile-template', afterAdd: fadeIn }, visible: hasLikedAnySongs">
+                            </div>
+
+
+                        </div>
+                        <div id="recentcontent" style="display: none">
+
+                            <div id="songs-table">
+
+
+
+
+                                <div style="float: left" data-bind="template: { foreach: recentSongs, name: 'song-tile-template', afterAdd: fadeIn }, visible: hasAnyRecentSongs">
+                                </div>
+
+                            </div>
+                        </div>
                     </div>
-                </div>
-     <table style="margin-top:-20px; width:50px">
-     <tr>
-         <td>
-             <a  data-bind="attr: { href: facebookShareLink }" target="blank" title="Share this song on Facebook">
-                 <img src="/Content/images/Facebook.png" alt="Share song Facebook">
-             </a> 
-         </td>
-         <td><a  target="blank" title="Share this song on Twitter" data-bind="attr: { href: twitterShareLink }">
-                 <img src="/Content/images/Twitter.png" alt="Share song on Twitter">
-             </a>
-         </td>
-     </tr>
- </table>
-</td>
-<td>
-    <div class="radiodetails">
-  
 
-                    <div id="biocontent" style="display:none">
 
-                        Bio Content Goes Here <a href="#" data-bind="click: uploadMusic">Upload your music</a>
-                    </div>
-         <div id="topcontent">
-              
-        <div id="albumcolumnart" data-bind="template: { foreach: topSongs, name: 'song-tile-template', afterAdd: fadeIn }, visible: topSongs().length > 0"></div>
 
-                    </div>
-        <div id="likedcontent" style="display:none">
-            
-        <div id="albumcolumnart" data-bind="template: { foreach: myLikedSongs, name: 'song-tile-template', afterAdd: fadeIn }, visible: hasLikedAnySongs"></div>
-    
-    
-        </div>
-        <div id="recentcontent" style="display:none">
+                </td>
+            </tr>
+        </tbody>
+    </table>
 
-                        <div id="songs-table">
-   
-         
-           
-       
-            <div  style="float:left" data-bind="template: { foreach: recentSongs, name: 'song-tile-template', afterAdd: fadeIn }, visible: hasAnyRecentSongs"></div>
-       
+
 </div>
-                    </div>
-                    </div>
-                 
-      
-   
-    </td>
-    </tr>
-    </tbody>
-              </table>
-
-    
-    </div>
-  <div style="position:absolute; right:200px"><button class="songcontrol"  id="hidebutton">Hide </button></div>
+<div style="position: absolute; right: 200px">
+    <button class="songcontrol" id="hidebutton">Hide </button>
+</div>
 
 <div class="grayed-out" style="display: none" data-bind="visible: songRequestVisible">
     <div class="song-request-dialog">
         <img class="song-control" data-bind="click: closeSongRequestWindow" style="position: absolute; right: -20px; top: -20px;" src="@Url.Content("~/content/images/Close.png")" />
         <h1 style="line-height: 22px;" class="title">Request a song</h1>
-        <span style="font-family: 'Lucida Sans'; font-size: 13px; margin-left: 5px; ">Sweet on one of Chavah's tunes?</span>
+        <span style="font-family: 'Lucida Sans'; font-size: 13px; margin-left: 5px;">Sweet on
+            one of Chavah's tunes?</span>
         <br />
-        <span style="font-family: 'Lucida Sans'; font-size: 13px; margin-left: 5px; ">Type the name below, Chavah will play it for all her listeners.</span>
+        <span style="font-family: 'Lucida Sans'; font-size: 13px; margin-left: 5px;">Type the
+            name below, Chavah will play it for all her listeners.</span>
         <input id="song-request-textbox" type="text" data-bind="value: songRequestText, valueUpdate: 'keyup'" />
-        <div id="song-request-drop-down" data-bind="visible: songRequestMatches().length >= 0, foreach: songRequestMatches"> 
+        <div id="song-request-drop-down" data-bind="visible: songRequestMatches().length >= 0, foreach: songRequestMatches">
             <div class="song-request-match ellipsis-overflow" data-bind="click: $root.songRequestMatchClicked">
                 <img data-bind="attr: { src: albumArtUri, title: album }" />
-                <div style="vertical-align:middle; display:inline-block; height: 48px;">
+                <div style="vertical-align: middle; display: inline-block; height: 48px;">
                     <span data-bind="text: artist + ' - ' + name"></span>
                 </div>
             </div>

@@ -33,6 +33,16 @@ namespace UsoundRadio.Models
                     .Replace('_', ':')
                     .Trim('-', ' ');
             }
+            else
+            {
+                // No hyphens; the file name isn't formatted as expected.
+                // Use the file name as the song name, put "Unknown" in everything else.
+                this.Name = Path.GetFileNameWithoutExtension(fileName);
+                this.Artist = "Unknown Artist";
+                this.Album = "Unknown Album";
+                this.Country = "Unknown Country";
+                this.Genre = "Unknown Genre";
+            }
 
             var indexOfFirstDash = fileNameWithouExtension.IndexOf(" - ");
             if (indexOfFirstDash != -1)

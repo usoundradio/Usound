@@ -1,7 +1,7 @@
 ﻿chavah.dataServices = {
 
     start: function() {
-        PubSub.subscribe("JsonGet", function (message, args) {
+        PubSub.subscribe("Get", function (message, args) {
             $.ajax({
                 url: "/Songs" + args.url,
                 data: args.data,
@@ -21,13 +21,9 @@
         PubSub.subscribe("Post", function (message, args) {
             $.post("/Songs" + args.url, args.data).success(function (result) {
                 if (args.responseMessage) {
-                    PubSub.publish(args.responseMessage, results);
+                    PubSub.publish(args.responseMessage, result);
                 }
             });
-        });
-
-        PubSub.subscribe("zzz", function (message, args) {
-            console.log("got zzz!");
         });
 
         // When the the PlaySongById message is sent, we do an AJAX call to fetch
@@ -35,7 +31,7 @@
         PubSub.subscribe("PlaySongById", function (message, args) {
             PubSub.publish("Pause");
             var fetchArgs = { clientId: chavah.localstorage.getOrCreateUserId(), songId: args.songId };
-            PubSub.publish("JsonGet", { url: "/GetSongById", responseMessage: "SongFetched", data: fetchArgs });
+            PubSub.publish("Get", { url: "/GetSongById", responseMessage: "SongFetched", data: fetchArgs });
         });
 
         // When a song is fetched, queue up playing that song.

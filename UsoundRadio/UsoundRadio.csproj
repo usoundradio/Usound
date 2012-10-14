@@ -229,6 +229,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Common\Range.cs" />
+    <Compile Include="Common\NewSongFinder.cs" />
     <Compile Include="Controllers\RavenController.cs" />
     <Compile Include="Data\Songs_CommunityRankIndex.cs" />
     <Compile Include="Data\Songs_RankStandings.cs" />
@@ -260,9 +261,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="App_ReadMe\Griffin.MvcContrib.RavenDb.txt" />
-    <Content Include="App_ReadMe\Griffin.MvcContrib.txt" />
-    <Content Include="Content\AlbumArt\default.jpg" />
+    <Content Include="Content\AlbumArt\default.png" />
     <Content Include="Content\AlbumArt\The Cell - Live.jpg" />
     <Content Include="Content\AlbumArt\The Green View - Acoustic Songs.jpg" />
     <Content Include="Content\AlbumArt\The Green View - Ripped From Youtube.jpg" />

@@ -12,7 +12,6 @@ using UsoundRadio.Common;
 using System.Threading.Tasks;
 using System.Diagnostics.Contracts;
 using Raven.Client.Linq;
-using UsoundRadio.Data;
 using Raven.Client;
 
 namespace UsoundRadio.Controllers
@@ -23,7 +22,7 @@ namespace UsoundRadio.Controllers
 
         public JsonResult GetSongMatches(string searchText)
         {
-            var songMatches = this.RavenSession
+            var songMatches = this.RavenDb
                 .Query<Song>()
                 .Where(s =>
                     s.Name.StartsWith(searchText) ||
@@ -60,15 +59,17 @@ namespace UsoundRadio.Controllers
 
         public FileResult GetSongAlbumArt(string songId)
         {
-            var song = this.RavenSession.Query<Song>().First(s => s.Id == songId);
-            var albumArtFile = Directory.EnumerateFiles(Constants.AlbumArtDirectory, string.Format("{0} - {1}*", song.Artist, song.Album)).FirstOrDefault();
-            var artFileOrDefaultPath = albumArtFile != null ? albumArtFile : Path.Combine(Constants.AlbumArtDirectory, "default.jpg");
-            return File(artFileOrDefaultPath, "image/jpeg");
+            var song = this.RavenDb.Query<Song>().First(s => s.Id == songId);
+            var albumArtFile =
+                Directory.EnumerateFiles(Constants.AlbumArtDirectory, string.Format("{0} - {1}*", song.Artist, song.Album)).FirstOrDefault()
+                ??
+                Directory.EnumerateFiles(Constants.AlbumArtDirectory, "default.*").FirstOrDefault();
+            return File(albumArtFile, "image/jpeg");
         }
 
         public FileResult GetSongFile(string songId)
         {
-            var song = this.RavenSession.Query<Song>().First(s => s.Id == songId);
+            var song = this.RavenDb.Query<Song>().First(s => s.Id == songId);
             var filePath = Path.Combine(Constants.MusicDirectory, song.FileName);
             return File(filePath, "audio/mpeg");
         }
@@ -76,19 +77,19 @@ namespace UsoundRadio.Controllers
         public JsonResult GetSongById(Guid clientId, string songId)
         {
             var user = OnSongRequestedByUser(clientId);
-            var songLike = this.RavenSession
+            var songLike = this.RavenDb
                 .Query<Like>()
                 .Customize(c => c.Include<Like>(l => l.SongId))
                 .FirstOrDefault(s => s.UserId == user.Id && s.SongId == songId);
 
             if (songLike != null)
             {
-                var song = this.RavenSession.Load<Song>(songId.ToString());
+                var song = this.RavenDb.Load<Song>(songId.ToString());
                 return Json(song.ToDto(songLike.ToSongLikeEnum()), JsonRequestBehavior.AllowGet);
             }
             else
             {
-                var song = this.RavenSession
+                var song = this.RavenDb
                     .Query<Song>()
                     .FirstOrDefault(s => s.Id == songId);
                 if (song != null)
@@ -105,13 +106,13 @@ namespace UsoundRadio.Controllers
 
         public JsonResult GetRequestedSongId(Guid clientId)
         {
-            var user = RavenSession.Query<User>().FirstOrDefault(u => u.ClientIdentifier == clientId);
+            var user = RavenDb.Query<User>().FirstOrDefault(u => u.ClientIdentifier == clientId);
             if (user == null)
             {
                 return null;
             }
 
-            var recentSongRequests = RavenSession
+            var recentSongRequests = RavenDb
                 .Query<SongRequest>()
                 .Take(10)
                 .ToArray();
@@ -120,7 +121,7 @@ namespace UsoundRadio.Controllers
             var recent = DateTime.UtcNow.Subtract(TimeSpan.FromMinutes(15));
             recentSongRequests
                 .Where(s => s.DateTime < recent)
-                .ForEach(RavenSession.Delete);
+                .ForEach(RavenDb.Delete);
 
             var validSongRequest = recentSongRequests.FirstOrDefault(s => s.DateTime >= recent);
             if (validSongRequest != null)
@@ -134,7 +135,7 @@ namespace UsoundRadio.Controllers
 
         public JsonResult GetSongForSongRequest(Guid clientId, string songId)
         {
-            var user = RavenSession.Query<User>().FirstOrDefault(u => u.ClientIdentifier == clientId);
+            var user = RavenDb.Query<User>().FirstOrDefault(u => u.ClientIdentifier == clientId);
             var userId = user != null ? user.Id : "0";
             var songRequest = new SongRequest
             {
@@ -142,7 +143,7 @@ namespace UsoundRadio.Controllers
                 SongId = songId,
                 UserId = userId
             };
-            RavenSession.Store(songRequest);
+            RavenDb.Store(songRequest);
             return GetSongById(clientId, songId);
         }
 
@@ -158,7 +159,7 @@ namespace UsoundRadio.Controllers
 
         public JsonResult GetSongByAlbum(Guid clientId, string album, string artist)
         {
-            var song = this.RavenSession
+            var song = this.RavenDb
                 .Query<Song>()
                 .Customize(c => c.RandomOrdering())
                 .FirstOrDefault(s => s.Album == album);
@@ -176,7 +177,7 @@ namespace UsoundRadio.Controllers
 
         public JsonResult GetSongByArtist(Guid clientId, string artist)
         {
-            var song = this.RavenSession
+            var song = this.RavenDb
                 .Query<Song>()
                 .Customize(c => c.RandomOrdering())
                 .FirstOrDefault(s => s.Artist == artist);
@@ -194,7 +195,7 @@ namespace UsoundRadio.Controllers
 
         public JsonResult GetTrendingSongs(int count)
         {
-            var recentLikedSongIds = this.RavenSession
+            var recentLikedSongIds = this.RavenDb
                 .Query<Like>()
                 .Customize(c => c.Include<Like>(l => l.SongId))
                 .Where(l => l.LikeStatus == SongLike.Like)
@@ -203,7 +204,7 @@ namespace UsoundRadio.Controllers
                 .Take(count)
                 .ToArray();
 
-            var songs = this.RavenSession.Load<Song>(recentLikedSongIds)
+            var songs = this.RavenDb.Load<Song>(recentLikedSongIds)
                 .Where(s => s != null)
                 .Select(s => s.ToDto());
                 
@@ -212,10 +213,10 @@ namespace UsoundRadio.Controllers
 
         public JsonResult GetRandomLikedSongs(Guid clientId, int count)
         {
-            var user = this.RavenSession.Query<User>().FirstOrDefault(u => u.ClientIdentifier == clientId);
+            var user = this.RavenDb.Query<User>().FirstOrDefault(u => u.ClientIdentifier == clientId);
             if (user != null)
             {
-                var likedSongIds = this.RavenSession
+                var likedSongIds = this.RavenDb
                     .Query<Like>()
                     .Customize(x => x.RandomOrdering())
                     .Customize(x => x.Include<Like>(l => l.SongId))
@@ -224,7 +225,7 @@ namespace UsoundRadio.Controllers
                     .Take(count)
                     .ToArray();
 
-                var songs = this.RavenSession
+                var songs = this.RavenDb
                     .Load<Song>(likedSongIds)
                     .Where(s => s != null)
                     .AsEnumerable()
@@ -238,7 +239,7 @@ namespace UsoundRadio.Controllers
 
         public JsonResult GetTopSongs(int count)
         {
-            var results = this.RavenSession
+            var results = this.RavenDb
                 .Query<Song>()
                 .OrderByDescending(s => s.CommunityRank)
                 .Take(count)
@@ -253,7 +254,7 @@ namespace UsoundRadio.Controllers
         {
             foreach (var song in songs)
             {
-                this.RavenSession.Store(song);
+                this.RavenDb.Store(song);
             }
 
             return Json(songs, JsonRequestBehavior.AllowGet);
@@ -271,15 +272,15 @@ namespace UsoundRadio.Controllers
 
             // Find the song with the file name and replace it.
             // If no such song exists, create a new one.
-            var song = RavenSession.Query<Song>().FirstOrDefault(s => s.FileName == fileName) ?? new Song(fileName);
-            RavenSession.Store(song);
+            var song = RavenDb.Query<Song>().FirstOrDefault(s => s.FileName == fileName) ?? new Song(fileName);
+            RavenDb.Store(song);
             return Json(song.ToDto(), JsonRequestBehavior.AllowGet);
         }
 
         public JsonResult GetSongs()
         {
-            const int maxSongs = 25;
-            var songs = RavenSession
+            const int maxSongs = 100;
+            var songs = RavenDb
                 .Query<Song>()
                 .Customize(c => c.RandomOrdering())
                 .Take(maxSongs);
@@ -297,13 +298,13 @@ namespace UsoundRadio.Controllers
 
         private User CreateUserIfNecessary(Guid clientId)
         {
-            var user = this.RavenSession
+            var user = this.RavenDb
                 .Query<User>()
                 .FirstOrDefault(u => u.ClientIdentifier == clientId);
             if (user == null)
             {
                 user = new User { ClientIdentifier = clientId };
-                this.RavenSession.Store(user);
+                this.RavenDb.Store(user);
             }
             return user;
         }
@@ -312,7 +313,7 @@ namespace UsoundRadio.Controllers
         {
             // This is NOT an unbounded result set:
             // This queries the Songs_RankStandings index, which will reduce the results. Max number of results will be the number of CommunityRankStanding enum constants.
-            var songRankStandings = this.RavenSession
+            var songRankStandings = this.RavenDb
                 .Query<Song, Songs_RankStandings>()
                 .As<Songs_RankStandings.Results>()
                 .ToArray();
@@ -349,7 +350,7 @@ namespace UsoundRadio.Controllers
 
         private Song PickRandomSong()
         {
-            return RavenSession.Query<Song>()
+            return RavenDb.Query<Song>()
                 .Customize(c => c.RandomOrdering())
                 .First();
         }
@@ -359,7 +360,7 @@ namespace UsoundRadio.Controllers
             var randomLikedSong = user.Preferences.Songs.Where(s => s.LikeCount == 1).RandomElement();
             if (randomLikedSong != null)
             {
-                return RavenSession.Query<Song>().FirstOrDefault(s => s.Id == randomLikedSong.Name);
+                return RavenDb.Query<Song>().FirstOrDefault(s => s.Id == randomLikedSong.Name);
             }
             return null;
         }
@@ -369,7 +370,7 @@ namespace UsoundRadio.Controllers
             var randomLikedArtist = user.Preferences.GetLikedArtists().RandomElement();
             if (randomLikedArtist != null)
             {
-                return this.RavenSession.Query<Song>()
+                return this.RavenDb.Query<Song>()
                     .Where(s => s.Artist == randomLikedArtist.Name)
                     .Customize(c => c.RandomOrdering())
                     .FirstOrDefault();
@@ -383,7 +384,7 @@ namespace UsoundRadio.Controllers
             var randomLikedAlbum = user.Preferences.GetLikedAlbums().RandomElement();
             if (randomLikedAlbum != null)
             {
-                return this.RavenSession.Query<Song>()
+                return this.RavenDb.Query<Song>()
                     .Where(s => s.Album == randomLikedAlbum.Name)
                     .Customize(c => c.RandomOrdering())
                     .FirstOrDefault();
@@ -395,7 +396,7 @@ namespace UsoundRadio.Controllers
         private Song PickRankedSongForUser(CommunityRankStanding rank, User user)
         {
             var dislikedSongIds = user.Preferences.GetDislikedSongs().Select(s => s.Name).ToArray();
-            return this.RavenSession.Query<Song>()
+            return this.RavenDb.Query<Song>()
                 .Where(s => s.CommunityRankStanding == rank && !s.Id.In(dislikedSongIds))
                 .Customize(x => x.RandomOrdering())
                 .FirstOrDefault();
@@ -406,14 +407,14 @@ namespace UsoundRadio.Controllers
             user.TotalPlays += 1;
 
             var todaysDate = DateTime.Now.Date;
-            var visit = this.RavenSession.Query<Visit>().FirstOrDefault(v => v.UserId == user.Id && v.DateTime == todaysDate);
+            var visit = this.RavenDb.Query<Visit>().FirstOrDefault(v => v.UserId == user.Id && v.DateTime == todaysDate);
             if (visit != null)
             {
                 visit.TotalPlays += 1;
             }
             else
             {
-                this.RavenSession.Store(new Visit()
+                this.RavenDb.Store(new Visit()
                 {
                     TotalPlays = 1,
                     UserId = user.Id,
@@ -424,12 +425,12 @@ namespace UsoundRadio.Controllers
 
         private void UpdateLikeStatus(Guid clientId, string songId, SongLike likeStatus)
         {
-            var user = this.RavenSession
+            var user = this.RavenDb
                 .Query<User>()
                 .FirstOrDefault(u => u.ClientIdentifier == clientId);
             if (user != null)
             {
-                var existingLike = this.RavenSession
+                var existingLike = this.RavenDb
                     .Query<Like>()
                     .FirstOrDefault(l => l.SongId == songId && l.UserId == user.Id);
                 if (existingLike != null)
@@ -445,11 +446,11 @@ namespace UsoundRadio.Controllers
                         UserId = user.Id,
                         Date = DateTime.Now
                     };
-                    this.RavenSession.Store(newLikeStatus);
+                    this.RavenDb.Store(newLikeStatus);
                 }
 
                 // Update the community rank.
-                var songInDb = this.RavenSession
+                var songInDb = this.RavenDb
                     .Query<Song>()
                     .FirstOrDefault(s => s.Id == songId);
                 if (songInDb != null)
@@ -458,7 +459,7 @@ namespace UsoundRadio.Controllers
                     user.Preferences.Update(songInDb, likeStatus);
 
                     // Update song.CommunityRankStanding
-                    var communityRankStats = this.RavenSession
+                    var communityRankStats = this.RavenDb
                         .Query<Song, Songs_CommunityRankIndex>()
                         .As<Songs_CommunityRankIndex.Results>()
                         .FirstOrDefault();

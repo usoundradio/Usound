@@ -296,7 +296,7 @@
         return self.songRequestText();
     }).extend({ throttle: 500 });
     this.songRequestText.subscribe(function (requestText) {
-        PubSub.publish("JsonGet", { url: "/GetSongMatches", data: { searchText: requestText }, responseMessage: "SongMatchesResults" });
+        PubSub.publish("Get", { url: "/GetSongMatches", data: { searchText: requestText }, responseMessage: "SongMatchesResults" });
     });
 
     // When we click next song, it should pause the current song, then
@@ -311,12 +311,23 @@
         }
         else {
             // No song requests pending. Just grab the next song.
-            PubSub.publish("JsonGet", {
+            PubSub.publish("Get", {
                 url: "/GetSongForClient",
                 data: { clientId: chavah.localstorage.getOrCreateUserId() },
                 responseMessage: "SongFetched"
             });
         }
+    });
+
+    PubSub.subscribe("SongUploadCompleted", function (message, args) {
+        // When a song upload finishes, refetch the top songs immediately.
+        PubSub.publish("Get", {
+            url: "/GetTopSongs",
+            data: { count: 31 },
+            responseMessage: "TopSongResults"
+        });
+
+        PubSub.publish("RefreshSongsGrid");
     });
 
     PubSub.subscribe("SetCurrentMediaUri", function (message, args) {
