@@ -1,8 +1,8 @@
-﻿<!DOCTYPE html>
-<html>
-<head>
-    <meta name="viewport" content="width=device-width" />
-    <title>Usound Radio</title>
+﻿<html lang="en">
+    <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Usound Radio</title>
     <meta charset="utf-8" />
     <meta name="description" content="Built By Musicians. Driven By Listeners." />
     <!--[if IE]>
@@ -16,16 +16,19 @@
     @Scripts.Render("~/bundles/jquery")
 
     @Scripts.Render("~/bundles/modernizr")
-    <script src="~/Scripts/kendo.aspnetmvc.min.js"></script>
-    <script src="~/Scripts/kendo.web.min.js"></script>
-    <link href="~/Content/kendo.default.min.css" rel="stylesheet" />
-    <link href="~/Content/kendo.common.min.css" rel="stylesheet" />
-    <link href='http://fonts.googleapis.com/css?family=Josefin+Slab' rel='stylesheet' type='text/css'>
-
-
-
-    <link href='http://fonts.googleapis.com/css?family=Love+Ya+Like+A+Sister' rel='stylesheet' type='text/css'>
-
+     
+          <link href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.1.1/css/bootstrap-combined.min.css" rel="stylesheet">
+      <link href="~/Content/bootstrap-responsive.min.css" rel="stylesheet" />
+    <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
+    <!--[if lt IE 9]>
+      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <!-- Le fav and touch icons -->
+    <link rel="shortcut icon" href="../assets/ico/favicon.ico">
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="../assets/ico/apple-touch-icon-144-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="../assets/ico/apple-touch-icon-114-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="../assets/ico/apple-touch-icon-72-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" href="../assets/ico/apple-touch-icon-57-precomposed.png">
     <script src="@Url.Content("~/Scripts/chavah.initialize.js")" type="text/javascript"></script>
     <script src="@Url.Content("~/Scripts/jquery.audiocontrol.js")" type="text/javascript"></script>
     <script src="@Url.Content("~/Scripts/modernizr-2.5.3.js")" type="text/javascript"></script>
@@ -40,47 +43,74 @@
     <script src="@Url.Content("~/Scripts/chavah.dataservices.js")" type="text/javascript"></script>
     <script src="@Url.Content("~/Scripts/chavah.bindinghandlers.js")" type="text/javascript"></script>
     <script src="@Url.Content("~/Scripts/chavah.mainviewmodel.js")" type="text/javascript"></script>
-
-    <script src="@Url.Content("~/Scripts/UsoundGrid.js")" type="text/javascript"></script>
     <script src="https://api.filepicker.io/v0/filepicker.js" type="text/javascript"></script>
 
 </head>
 <body>
-    <header>
-        <div class="content-wrapper">
-            <div class="float-left">
-                <p class="site-title">
-                    <img src="~/Content/images/LogoSmall.png" /></p>
-            </div>
-            <div class="topaudiocontrol" style="float: left">
-                <img id="playbutton" src="~/Images/RadioButtons/control_play.png" data-bind="click: playPause" />
-                <img src="~/Images/RadioButtons/control_end.png" data-bind="click: nextSong" />
-            </div>
-            <div class="topaudiocontrol" style="float: left">
-                <img src="~/Images/RadioButtons/thumb_down.png" />
-                <img src="~/Images/RadioButtons/thumb_up.png" />
-            </div>
-            <span id="audiostatus" data-bind="text: player.mediaState"></span>
-            <div><a href="#" data-bind="click: uploadMusic">Upload your music</a></div>
-        </div>
-    </header>
+           <div id="fb-root"></div>
+<script>(function (d, s, id) {
+    var js, fjs = d.getElementsByTagName(s)[0];
+    if (d.getElementById(id)) return;
+    js = d.createElement(s); js.id = id;
+    js.src = "//connect.facebook.net/en_US/all.js#xfbml=1&appId=480606998639552";
+    fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+     
+     
+                    
+     
 
-    <section id="main">
-        <div id="body" class="background">
-            <div class="topshadow" style="margin: 0 auto; width: 960px; height: 5px"></div>
+
+
+    <header>
+        
+          <div class="navbar navbar-fixed-top">
+      <div class="navbar-inner">
+        <div class="container">
+          <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </a>
+          <a class="brand" href="#">
+              <img src="~/Content/images/LogoSmall.png" style="width:150px; margin-bottom:-15px; margin-top:-5px" /></a>
+          <div class="nav-collapse collapse">
+            <ul class="nav">
+              <li class="active"><a href="#">Home</a></li>
+ <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown">About <b class="caret"></b></a>
+                <ul class="dropdown-menu">
+                  <li><a href="#">Action</a></li>
+                  <li><a href="#">Another action</a></li>
+                  <li><a href="#">Something else here</a></li>
+                  <li class="divider"></li>
+                  <li class="nav-header">Nav header</li>
+                  <li><a href="#">Separated link</a></li>
+                  <li><a href="#">One more separated link</a></li>
+                </ul>
+
+              </li>  
+                <li><img class="song-control" data-bind="click: toggleSongRequestDialogVisible" src="/content/images/request.png" title="Got a song request? Tyrone will play whatever tune's on your mind."></li>          
+                 <li id="feedbacklink"><a href="#feedback">Feedback</a></li>
+
+                  <li id="contactlink"><a  href="#">Contact</a></li>
+             
+            </ul>
+            <form Action="Account/Login" method="get" class="navbar-form pull-right">
+              <input style="height: 30px" class="span2" type="text" placeholder="Email">
+              <input style="height: 30px"  class="span2" type="password" placeholder="Password">
+              <button type="submit" class="btn">Sign in</button>
+            </form>
+          </div><!--/.nav-collapse -->
+        </div>
+      </div>
+    </div>
+    
+    </header>
+x
+    <div class="container">
             @RenderBody()
         </div>
-    </section>
-
-    <footer style="margin-top: 60px">
-        <div style="margin: 0 auto; width: 1024px">
-
-            <div class="topshadow" style="width: 1024px; height: 4px"></div>
-            @Html.Partial("_Footer");
-             <div class="topshadow" style="width: 1024px; height: 4px"></div>
-        </div>
-    </footer>
-
     <style>
         .topaudiocontrol
         {
@@ -98,9 +128,54 @@
                 {
                     background-color: red;
                 }
+    .addtoplaylist
+    {
+        cursor:pointer;
+        width:25px;
+       
+    }
+     .addtoplaylist:hover
+    {
+        background-color:red;
+       
+    }
     </style>
 
 
 
 </body>
+<!-- End Contact Modal -->
+
+    @RenderSection("scripts", required: false)
+
+
+    <!-- Le javascript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+	      <script src="~/Scripts/bootstrap.min.js"></script>
+       
+        
+       <script>
+           $(function () {
+               {
+
+                   $("#contactlink").click(function () {
+                       $("#contactModal").modal({
+                           backdrop: true,
+                           keyboard: true
+                       });
+                   });
+                   $("#feedbacklink").click(function () {
+                       $("#feedbackModal").modal({
+                           backdrop: true,
+                           keyboard: true
+                       });
+                   });
+
+               }
+           });
+        </script>
+ 
 </html>
+
+

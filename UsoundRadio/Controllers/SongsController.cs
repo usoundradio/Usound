@@ -98,7 +98,7 @@ namespace UsoundRadio.Controllers
                 }
 
                 // This should never happen: a client requets a song ID that doesn't exist.
-                var errorMessage = "Unable to find song with ID = " + songId.ToString();
+                 var errorMessage = "Unable to find song with ID = " + songId.ToString();
                 this.Log(errorMessage);
                 throw new Exception(errorMessage);
             }

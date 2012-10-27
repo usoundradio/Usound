@@ -265,6 +265,8 @@
     <Content Include="Content\AlbumArt\The Cell - Live.jpg" />
     <Content Include="Content\AlbumArt\The Green View - Acoustic Songs.jpg" />
     <Content Include="Content\AlbumArt\The Green View - Ripped From Youtube.jpg" />
+    <Content Include="Content\bootstrap-responsive.min.css" />
+    <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\images\activebutton.png" />
     <Content Include="Content\images\add_32x32.png" />
     <Content Include="Content\images\ajax-loader.gif" />
@@ -352,8 +354,6 @@
     <Content Include="Content\images\UpChecked.png" />
     <Content Include="Content\images\user_32x32.png" />
     <Content Include="Content\images\Volume Button.png" />
-    <Content Include="Content\kendo.common.min.css" />
-    <Content Include="Content\kendo.mobile.all.min.css" />
     <Content Include="Content\Default\editor.png" />
     <Content Include="Content\Default\imagebrowser.png" />
     <Content Include="Content\Default\loading-image.gif" />
@@ -361,14 +361,13 @@
     <Content Include="Content\Default\slider-h.gif" />
     <Content Include="Content\Default\slider-v.gif" />
     <Content Include="Content\Default\sprite.png" />
-    <Content Include="Content\kendo.default.min.css" />
+    <Content Include="Content\Site.css" />
     <Content Include="Content\textures\glass.png" />
     <Content Include="Content\textures\highlight.png" />
     <Content Include="Content\Music\B.Lewis - Mercury Backburner - 07 - Do Do Do.mp3" />
     <Content Include="Content\Music\The Cell - Live - 01 - Dog Of Panicoustic.mp3" />
     <Content Include="Content\Music\The Green View - Acoustic Songs - 01 - Darling Annie.mp3" />
     <Content Include="Content\Music\The Green View - Ripped From Youtube - 01 - Moonshine %28Acoustic%29.mp3" />
-    <Content Include="Content\SongRequest.mp3" />
     <Content Include="Content\swf\expressInstall.swf" />
     <Content Include="Content\swf\player.swf" />
     <Content Include="Content\themes\base\images\ui-bg_flat_0_aaaaaa_40x100.png" />
@@ -438,6 +437,8 @@
     <Content Include="Images\RadioButtons\thumb_down.png" />
     <Content Include="Images\RadioButtons\thumb_up.png" />
     <Content Include="Images\twitter.png" />
+    <Content Include="Scripts\bootstrap.js" />
+    <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Scripts\chavah.bindinghandlers.js" />
     <Content Include="Scripts\chavah.collections.js" />
     <Content Include="Scripts\chavah.converters.js" />
@@ -494,7 +495,6 @@
     <Content Include="Web.Release.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>
-    <Content Include="Content\Site.css" />
     <Content Include="Scripts\_references.js" />
     <Content Include="Images\accent.png" />
     <Content Include="Images\bullet.png" />

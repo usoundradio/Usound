@@ -11,12 +11,47 @@
     this.songRequestText = ko.observable('');
     this.mediaState = ko.observable();
     this.currentMediaUri = ko.observable();
+    this.playlist = ko.observableArray();
+    var Song = function (Name) {
+        this.Name = ko.observable(Name);
+    };
+    var PlaylistItem = function (song) {
+        var self = this; // Scope Trick
+
+        self.song = ko.observable(song);
+
+       
+    };
+
     // The current media URI is usually the currentSong.Uri. But for song requests, we play the request announcement URI.
     this.currentSong.subscribe(function (newSong) {
         if (newSong) {
             self.currentMediaUri(newSong.uri);
         }
     });
+    //PLAYLIST Starts Here!!!
+    //add song to Playlist
+    self.addtoPlaylist = function (song, event) {
+        var playlist_item = new PlaylistItem(song, 1);
+
+        self.playlist.push(playlist_item);
+    };
+    self.removeFromPlaylist = function (playlist_item, event) {
+        self.playlist.remove(playlist_item);
+    };
+    self.playPlaylist = function (playlist_item, event) {
+        var selectedSong = playlist_item;
+        if (selectedSong) {
+            self.songRequestManager.requestSong(selectedSong);
+        }
+   
+    };
+    $.getJSON("/Songs/getsongmatches?searchText=", function (songs) {
+        
+        self.songs(songs);
+
+    });
+    //END OF PLAYLIST
 
     this.trendingSongs = ko.observableArray([
        new chavah.songPlaceHolder("TrendingSongResults", 0),
@@ -28,8 +63,7 @@
            new chavah.songPlaceHolder("TrendingSongResults", 6),
            new chavah.songPlaceHolder("TrendingSongResults", 7),
            new chavah.songPlaceHolder("TrendingSongResults", 8),
-           new chavah.songPlaceHolder("TrendingSongResults", 9),
-           new chavah.songPlaceHolder("TrendingSongResults", 10)
+           new chavah.songPlaceHolder("TrendingSongResults", 9)
     ]);
 
     this.myLikedSongs = ko.observableArray([
@@ -43,30 +77,9 @@
                     new chavah.songPlaceHolder("RandomLikedSongResults", 6),
                     new chavah.songPlaceHolder("RandomLikedSongResults", 7),
                     new chavah.songPlaceHolder("RandomLikedSongResults", 8),
-	                new chavah.songPlaceHolder("RandomLikedSongResults", 9),
-	                new chavah.songPlaceHolder("RandomLikedSongResults", 10),
-                     new chavah.songPlaceHolder("RandomLikedSongResults", 11),
-        new chavah.songPlaceHolder("RandomLikedSongResults", 12),
-
-                    new chavah.songPlaceHolder("RandomLikedSongResults", 13),
-                    new chavah.songPlaceHolder("RandomLikedSongResults", 14),
-                    new chavah.songPlaceHolder("RandomLikedSongResults", 15),
-                    new chavah.songPlaceHolder("RandomLikedSongResults", 16),
-                    new chavah.songPlaceHolder("RandomLikedSongResults", 17),
-                    new chavah.songPlaceHolder("RandomLikedSongResults", 18),
-	                new chavah.songPlaceHolder("RandomLikedSongResults", 19),
-	                new chavah.songPlaceHolder("RandomLikedSongResults", 20),
-    new chavah.songPlaceHolder("RandomLikedSongResults", 21),
-        new chavah.songPlaceHolder("RandomLikedSongResults", 22),
-
-                   new chavah.songPlaceHolder("RandomLikedSongResults", 23),
-                   new chavah.songPlaceHolder("RandomLikedSongResults", 24),
-                   new chavah.songPlaceHolder("RandomLikedSongResults", 25),
-                   new chavah.songPlaceHolder("RandomLikedSongResults", 26),
-                   new chavah.songPlaceHolder("RandomLikedSongResults", 27),
-                   new chavah.songPlaceHolder("RandomLikedSongResults", 28),
-                   new chavah.songPlaceHolder("RandomLikedSongResults", 29),
-                   new chavah.songPlaceHolder("RandomLikedSongResults", 30)
+	                new chavah.songPlaceHolder("RandomLikedSongResults", 9)
+	            
+            
     ]);
 
     this.topSongs = ko.observableArray([
@@ -80,27 +93,8 @@
         new chavah.songPlaceHolder("TopSongResults", 7),
         new chavah.songPlaceHolder("TopSongResults", 8),
 	    new chavah.songPlaceHolder("TopSongResults", 9),
-	    new chavah.songPlaceHolder("TopSongResults", 10),
-        new chavah.songPlaceHolder("TopSongResults", 11),
-        new chavah.songPlaceHolder("TopSongResults", 12),
-        new chavah.songPlaceHolder("TopSongResults", 13),
-        new chavah.songPlaceHolder("TopSongResults", 14),
-        new chavah.songPlaceHolder("TopSongResults", 15),
-        new chavah.songPlaceHolder("TopSongResults", 16),
-        new chavah.songPlaceHolder("TopSongResults", 17),
-        new chavah.songPlaceHolder("TopSongResults", 18),
-	    new chavah.songPlaceHolder("TopSongResults", 19),
-	    new chavah.songPlaceHolder("TopSongResults", 20),
-        new chavah.songPlaceHolder("TopSongResults", 21),
-        new chavah.songPlaceHolder("TopSongResults", 22),
-        new chavah.songPlaceHolder("TopSongResults", 23),
-        new chavah.songPlaceHolder("TopSongResults", 24),
-        new chavah.songPlaceHolder("TopSongResults", 25),
-        new chavah.songPlaceHolder("TopSongResults", 26),
-        new chavah.songPlaceHolder("TopSongResults", 27),
-        new chavah.songPlaceHolder("TopSongResults", 28),
-        new chavah.songPlaceHolder("TopSongResults", 29),
-        new chavah.songPlaceHolder("TopSongResults", 30)
+	    new chavah.songPlaceHolder("TopSongResults", 10)
+     
     ]);
 
     this.recentSongs = ko.observableArray([
@@ -113,19 +107,8 @@
 	            new chavah.songPlaceHolder(),
 	            new chavah.songPlaceHolder(),
 	            new chavah.songPlaceHolder(),
-         new chavah.songPlaceHolder(),
-            new chavah.songPlaceHolder(),
-        new chavah.songPlaceHolder(),
-        new chavah.songPlaceHolder(),
-	            new chavah.songPlaceHolder(),
-	            new chavah.songPlaceHolder(),
-	            new chavah.songPlaceHolder(),
-	            new chavah.songPlaceHolder(),
-	            new chavah.songPlaceHolder(),
-	            new chavah.songPlaceHolder(),
-                      new chavah.songPlaceHolder(),
          new chavah.songPlaceHolder()
-
+            
 
     ]);
 
@@ -156,36 +139,19 @@
         var eighthSong = self.recentSongs()[7].song();
         var ninethSong = self.recentSongs()[8].song();
         var tenthSong = self.recentSongs()[9].song();
-        var eleventhSong = self.recentSongs()[10].song();
-        var secondteenthSong = self.recentSongs()[11].song();
-        var thirdteenthSong = self.recentSongs()[12].song();
-        var fourthteenthSong = self.recentSongs()[13].song();
-        var fifthteenthSong = self.recentSongs()[14].song();
-        var sixthteenthSong = self.recentSongs()[15].song();
-        var seventeenthSong = self.recentSongs()[16].song();
-        var eighteenthSong = self.recentSongs()[17].song();
-        var nineteenthSong = self.recentSongs()[18].song();
+        
 
-        setTimeout(function () { self.recentSongs()[0].enqueuedSong(song); }, 1000);
-        setTimeout(function () { self.recentSongs()[1].enqueuedSong(firstSong) }, 1500);
-        setTimeout(function () { self.recentSongs()[2].enqueuedSong(secondSong) }, 1750);
-        setTimeout(function () { self.recentSongs()[3].enqueuedSong(thirdSong) }, 1750);
-        setTimeout(function () { self.recentSongs()[4].enqueuedSong(fourthSong) }, 2000);
-        setTimeout(function () { self.recentSongs()[5].enqueuedSong(fifthSong) }, 2250);
-        setTimeout(function () { self.recentSongs()[6].enqueuedSong(sixthSong) }, 2500);
-        setTimeout(function () { self.recentSongs()[7].enqueuedSong(seventhSong) }, 1750);
-        setTimeout(function () { self.recentSongs()[8].enqueuedSong(eighthSong) }, 1750);
-        setTimeout(function () { self.recentSongs()[9].enqueuedSong(ninethSong) }, 1750);
-        setTimeout(function () { self.recentSongs()[10].enqueuedSong(tenthSong); }, 1000);
-        setTimeout(function () { self.recentSongs()[11].enqueuedSong(eleventhSong) }, 1500);
-        setTimeout(function () { self.recentSongs()[12].enqueuedSong(secondteenthSong) }, 1750);
-        setTimeout(function () { self.recentSongs()[13].enqueuedSong(thirdteenthSong) }, 1750);
-        setTimeout(function () { self.recentSongs()[14].enqueuedSong(fourthteenthSong) }, 2000);
-        setTimeout(function () { self.recentSongs()[15].enqueuedSong(fifthteenthSong) }, 2250);
-        setTimeout(function () { self.recentSongs()[16].enqueuedSong(sixthteenthSong) }, 2500);
-        setTimeout(function () { self.recentSongs()[17].enqueuedSong(seventeenthSong) }, 1750);
-        setTimeout(function () { self.recentSongs()[18].enqueuedSong(eighteenthSong) }, 1750);
-        setTimeout(function () { self.recentSongs()[19].enqueuedSong(nineteenthSong) }, 1750);
+        setTimeout(function () { self.recentSongs()[0].enqueuedSong(firstSong) }, 1500);
+        setTimeout(function () { self.recentSongs()[1].enqueuedSong(secondSong) }, 1750);
+        setTimeout(function () { self.recentSongs()[2].enqueuedSong(thirdSong) }, 1750);
+        setTimeout(function () { self.recentSongs()[3].enqueuedSong(fourthSong) }, 2000);
+        setTimeout(function () { self.recentSongs()[4].enqueuedSong(fifthSong) }, 2250);
+        setTimeout(function () { self.recentSongs()[5].enqueuedSong(sixthSong) }, 2500);
+        setTimeout(function () { self.recentSongs()[6].enqueuedSong(seventhSong) }, 1750);
+        setTimeout(function () { self.recentSongs()[7].enqueuedSong(eighthSong) }, 1750);
+        setTimeout(function () { self.recentSongs()[8].enqueuedSong(ninethSong) }, 1750);
+        setTimeout(function () { self.recentSongs()[9].enqueuedSong(tenthSong) }, 2000);
+
 
 
     }
@@ -194,11 +160,6 @@
         self.songRequestVisible(!self.songRequestVisible());
     }
 
-    //fadeOut: function(element) {
-    //    if (element.nodeType === 1) {
-    //        $(element).fadeOut("slow", function() { $(element).remove(); });
-    //    }
-    //},
 
     this.fadeIn = function (element) {
         if (element.nodeType === 1) {
@@ -338,6 +299,7 @@
         var songs = args.map(function (s) { return new Song(s) });
         self.songRequestMatches(songs);
     });
+
 
     // Start fetching the data for the song columns.
     chavah.dataServices.recurringFetch("/GetRandomLikedSongs", { clientId: this.userId, count: 31 }, 0, 15000, "RandomLikedSongResults");
