@@ -40,9 +40,9 @@
         self.playlist.remove(playlist_item);
     };
     self.playPlaylist = function (playlist_item, event) {
-        var selectedSong = playlist_item;
+        var selectedSong = playlist_item.song();
         if (selectedSong) {
-            self.songRequestManager.requestSong(selectedSong);
+            PubSub.publish("PlaySongById", { songId: selectedSong.Id });
         }
    
     };

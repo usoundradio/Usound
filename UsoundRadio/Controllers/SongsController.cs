@@ -98,7 +98,7 @@ namespace UsoundRadio.Controllers
                 }
 
                 // This should never happen: a client requets a song ID that doesn't exist.
-                 var errorMessage = "Unable to find song with ID = " + songId.ToString();
+                var errorMessage = "Unable to find song with ID = " + songId.ToString();
                 this.Log(errorMessage);
                 throw new Exception(errorMessage);
             }
@@ -135,6 +135,8 @@ namespace UsoundRadio.Controllers
 
         public JsonResult GetSongForSongRequest(Guid clientId, string songId)
         {
+            Contract.Requires(songId != null);
+
             var user = RavenDb.Query<User>().FirstOrDefault(u => u.ClientIdentifier == clientId);
             var userId = user != null ? user.Id : "0";
             var songRequest = new SongRequest
